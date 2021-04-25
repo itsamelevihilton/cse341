@@ -1,0 +1,29 @@
+After completing the assignment, be sure to push to Github. You do not have to worry about pushing to Heroku this lesson.
+Please answer the questions in this text file and submit it to I-Learn.
+
+1. Copy and paste the URL for your source code repository (e.g., GitHub):
+https://github.com/itsamelevihilton/cse341TeamActivities
+
+3. Briefly list and describe the elements of the application that are functioning. 
+The home page is functioning as designed and replaces unwieldy plus signs with spaces.
+You are able to input names which are saved between users.
+The users page is functioning as designed and pulls in the user list from a file.;
+
+4. Briefly describe any pieces of the assignment that are not yet working correctly.
+It is all functional.
+
+5. Briefly describe the "coolest" thing you learned while completing this assignment.
+I thought it was cool to dig into the deep stuff behind node.js before jumping into packages. You shouldn't ever have to do things we did in this assignment, but its nice to see how it works.
+
+6. If you could change this assignment to be more effective or helpful, what would you change?
+I would like to know see what (if anything) is viewable to the client.  It's possible that I may have missed that in the explanation videos.
+
+7. Please select the category you feel best describes your assignment: 5
+   1 - Some attempt was made
+   2 - Developing, but significantly deficient
+   3 - Slightly deficient, but still mostly adequate
+   4 - Meets requirements
+   5 - Shows creativity and excels above and beyond requirements
+
+8. Provide a brief justification (1-2 sentences) for selecting that category.
+I believe that I was just about as creative as I can get while still actually performing the functions that are required. It is a fairly simple problem, and a creative solution should probably be simple as well.
