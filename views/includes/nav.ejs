@@ -1,0 +1,10 @@
+<nav class="">
+    <ul class="nav-ul">
+        <% links.forEach((link) => { %>
+            <li class="nav-item <%= path === link.path ? 'active' : ''%>">
+                <a href="<%= link.path %>"><%= link.title %></a>
+            </li>
+        <% }); %>
+    </ul>
+  </nav>
+  
