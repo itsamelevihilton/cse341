@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <%- include ("../includes/head.ejs") %>
 </head>
@@ -8,10 +8,22 @@
     <%- include ("../includes/header.ejs") %>
     <%- include ("../includes/nav.ejs") %>
     <main class="">
-        <div class="">
-            <h2><%= title %></h2>
-            <p>This is my CSE 341 Portfolio. Please enjoy browsing what I've designed here.</p>
-        </div>
+        <section>
+            <h2>CSE 341 Course Objectives*</h2>
+            <p>This course builds on other web classes offered by the university and helps students create more advanced web applications and services. The emphasis of this course will be on server-side technologies and n-tier applications using NoSQL database technology. Client side technologies will be enhanced and combined with server-side technologies to create rich web applications.</p>
+            <p> At the end of this semester successful students will be able to:</p>
+            <ol>
+                <li>Know how to learn and possess well-developed problem-solving skills</li>
+                <li>articulate and follow effective design principles, patterns, and practices to create maintainable web services</li>
+                <li>Independently learn, evaluate, and apply new technologies</li>
+                <li>Work collaboratively with a development team</li>
+                <li>Be excited about possibilities of web development</li>
+            </ol>
+            <aside>
+                <p>*The CSE 341 Course Objectives were taken directly from the BYU-Idaho Spring 2021 semester CSE 341 syllabus.</p>
+            </aside>
+        </section>
     </main>
+    <%- include ("../includes/footer.ejs") %>
 </body>
 </html>

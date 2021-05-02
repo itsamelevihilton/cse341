@@ -1,0 +1,348 @@
+@import url("https://fonts.googleapis.com/css?family=Acme|Noticia+Text");
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+:root {
+  background-color: #e5ffff;
+  font-size: 1.1rem;
+}
+
+body {
+  margin: 0;
+  font-family: "Noticia Text", Georgia, "Times New Roman", serif;
+  width: 100%;
+  font-size: 1.5rem;
+}
+
+h2, h3, h4, h5, h6 {
+  font-family: Acme, Arial, Helvetica, sans-serif;
+  font-weight: 300;
+}
+
+h2 {
+  font-size: 4rem;
+  margin: 1rem 0 0.5rem 0;
+}
+
+p {
+  margin-top: 0.25rem;
+}
+
+@media (min-width: 50rem) {
+  body {
+    font-size: 1rem;
+  }
+}
+@media (min-width: 73rem) {
+  body {
+    margin: 2rem auto;
+    display: grid;
+    max-width: 86rem;
+    grid-template-columns: 26rem auto 10rem;
+    grid-template-rows: 26rem auto;
+    grid-template-areas: "logo main header" "sidebar main header" "footer footer footer";
+  }
+}
+.giantlogo {
+  display: none;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  background-color: #7ae9e9;
+  color: #003232;
+  font-family: Acme, Arial, Helvetica, sans-serif;
+  align-items: center;
+  height: 6rem;
+}
+header img {
+  padding: 1rem;
+  display: block;
+  height: 100%;
+}
+header h1 {
+  text-align: center;
+  font-size: 1.5rem;
+  margin: 0;
+}
+header h1 .breakpoint {
+  display: table;
+}
+header a {
+  display: flex;
+  margin: 0 1rem 0 0;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  text-decoration: none;
+}
+header a:focus, header a:hover {
+  background-color: #44d2d2;
+}
+header .hamburger {
+  display: block;
+  font-size: 2rem;
+  color: #003232;
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+}
+
+@media (min-width: 40rem) {
+  header {
+    position: static;
+    padding: 1rem;
+    height: 9rem;
+  }
+  header h1 {
+    text-align: end;
+    font-size: 3rem;
+  }
+  header img {
+    padding: 0rem;
+  }
+  header a {
+    display: none;
+  }
+}
+@media (min-width: 50rem) {
+  header {
+    height: 12rem;
+  }
+  header h1 {
+    font-size: 5rem;
+  }
+  header img {
+    padding: 0.25rem;
+  }
+}
+@media (min-width: 73rem) {
+  header {
+    background-color: transparent;
+    grid-area: header;
+    padding: 0;
+    height: auto;
+  }
+  header h1 {
+    font-size: 8rem;
+    text-align: start;
+    writing-mode: vertical-rl;
+    white-space: nowrap;
+  }
+  header h1 .breakpoint {
+    display: none;
+  }
+
+  .logo {
+    display: none;
+  }
+
+  .giantlogo {
+    display: block;
+    padding: 2rem;
+    width: 100%;
+    grid-area: logo;
+  }
+}
+nav {
+  position: fixed;
+  display: none;
+  top: 6rem;
+  background-color: #1e5a5a;
+  color: #7ae9e9;
+  font-family: Acme, Arial, Helvetica, sans-serif;
+  width: 100%;
+}
+nav::before {
+  z-index: 9;
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #001e1e;
+  opacity: 0.5;
+}
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+}
+nav ul .spacer {
+  display: none;
+  width: 1rem;
+}
+nav ul li {
+  z-index: 99;
+  width: 100%;
+  font-size: 2rem;
+}
+nav ul li::after {
+  content: "";
+  display: block;
+  margin: 0 auto;
+  height: 2px;
+  width: 100%;
+  background: linear-gradient(to right, #1e5a5a, #1e5a5a, #1e5b5b, #1f5d5d, #205f5f, #216262, #226565, #236969, #246d6d, #267272, #287878, #2a7e7e, #2c8383, #2d8787, #2e8b8b, #308f8f, #309191, #319393, #329595, #329696, #329696, #329696, #329696, #329595, #319393, #309191, #308f8f, #2e8b8b, #2d8787, #2c8383, #2a7e7e, #287878, #267272, #246d6d, #236969, #226565, #216262, #205f5f, #1f5d5d, #1e5b5b, #1e5a5a, #1e5a5a);
+}
+nav ul li:last-child::after {
+  display: none;
+}
+nav ul li.active {
+  color: #e5ffff;
+}
+nav ul a {
+  display: block;
+  padding: 1rem;
+  text-decoration: none;
+  color: inherit;
+}
+nav ul a:hover {
+  background-color: #003232;
+  color: #e5ffff;
+}
+nav ul a:focus {
+  background-color: #001e1e;
+  color: #e5ffff;
+}
+
+@media (min-width: 40rem) {
+  nav {
+    display: block;
+    position: static;
+    font-size: 2rem;
+  }
+  nav::before {
+    display: none;
+  }
+  nav ul {
+    flex-direction: row;
+  }
+  nav ul li {
+    width: auto;
+    display: flex;
+    align-items: center;
+  }
+  nav ul li::after {
+    height: 75%;
+    width: 2.4px;
+    background: linear-gradient(to bottom, #1e5a5a, #1e5a5a, #1e5b5b, #1f5d5d, #205f5f, #216262, #226565, #236969, #246d6d, #267272, #287878, #2a7e7e, #2c8383, #2d8787, #2e8b8b, #308f8f, #309191, #319393, #329595, #329696, #329696, #329696, #329696, #329595, #319393, #309191, #308f8f, #2e8b8b, #2d8787, #2c8383, #2a7e7e, #287878, #267272, #246d6d, #236969, #226565, #216262, #205f5f, #1f5d5d, #1e5b5b, #1e5a5a, #1e5a5a);
+    margin: 0;
+  }
+  nav ul li:last-child::after {
+    display: block;
+  }
+  nav ul .spacer {
+    display: block;
+    display: flex;
+    align-items: center;
+  }
+  nav ul .spacer::after {
+    margin-left: auto;
+  }
+}
+@media (min-width: 50rem) {
+  nav {
+    font-size: 1.25rem;
+  }
+}
+@media (min-width: 73rem) {
+  nav {
+    grid-area: sidebar;
+    background-color: #e5ffff;
+    padding: 1rem 1rem 1rem 3rem;
+  }
+  nav ul {
+    flex-direction: column;
+    width: 22rem;
+  }
+  nav ul .spacer {
+    display: none;
+  }
+  nav ul li {
+    flex-direction: row-reverse;
+    background-color: #003232;
+    text-align: end;
+    height: 4rem;
+    margin: 0.5rem;
+    justify-content: space-between;
+  }
+  nav ul li::after {
+    display: block;
+    height: 100%;
+    width: 9rem;
+    z-index: 100;
+    background: linear-gradient(to right, #e5ffff, #e4fefe, #e0fbfb, #dbf6f6, #d3efef, #c8e5e5, #bcdada, #adcdcd, #9cbdbd, #88acac, #739999, #5d8585, #497474, #386464, #295757, #1d4c4c, #124242, #0a3b3b, #053636, #013333, #003232);
+  }
+  nav ul li:hover::after {
+    background: linear-gradient(to right, #e5ffff, #e4fefe, #e0fbfb, #dbf5f5, #d3eded, #c8e3e3, #bcd7d7, #adc8c8, #9cb7b7, #88a4a4, #738f8f, #5d7979, #496666, #385555, #294747, #1d3a3a, #123030, #0a2828, #052323, #011f1f, #001e1e);
+  }
+  nav ul li:hover {
+    background-color: #001e1e;
+  }
+  nav ul li.active {
+    flex-direction: row;
+    background-color: #001e1e;
+  }
+  nav ul li.active::after {
+    background: linear-gradient(to right, #001e1e, #011f1f, #052323, #0a2828, #123030, #1d3a3a, #294747, #385555, #496666, #5d7979, #738f8f, #88a4a4, #9cb7b7, #adc8c8, #bcd7d7, #c8e3e3, #d3eded, #dbf5f5, #e0fbfb, #e4fefe, #e5ffff);
+  }
+  nav ul li.active:hover::after {
+    background: linear-gradient(to right, #001e1e, #011f1f, #052323, #0a2828, #123030, #1d3a3a, #294747, #385555, #496666, #5d7979, #738f8f, #88a4a4, #9cb7b7, #adc8c8, #bcd7d7, #c8e3e3, #d3eded, #dbf5f5, #e0fbfb, #e4fefe, #e5ffff);
+  }
+  nav ul a:hover, nav ul a:focus {
+    background-color: transparent;
+    color: #e5ffff;
+  }
+}
+main {
+  padding: 1rem 1rem 0 1rem;
+  width: 100%;
+  margin-top: 6rem;
+}
+main aside {
+  text-align: center;
+}
+
+@media (min-width: 40rem) {
+  main {
+    margin-top: 0;
+  }
+}
+@media (min-width: 73rem) {
+  main {
+    grid-area: main;
+  }
+}
+footer {
+  padding: 1rem;
+  width: 100%;
+  text-align: center;
+}
+footer::before {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(to right, #e5ffff, #e4fefe, #e0fbfb, #dbf5f5, #d3eded, #c8e3e3, #bcd7d7, #adc8c8, #9cb7b7, #88a4a4, #738f8f, #5d7979, #496666, #385555, #294747, #1d3a3a, #123030, #0a2828, #052323, #011f1f, #001e1e, #001e1e, #011f1f, #052323, #0a2828, #123030, #1d3a3a, #294747, #385555, #496666, #5d7979, #738f8f, #88a4a4, #9cb7b7, #adc8c8, #bcd7d7, #c8e3e3, #d3eded, #dbf5f5, #e0fbfb, #e4fefe, #e5ffff);
+}
+footer p {
+  margin: 0.5rem auto;
+}
+
+@media (min-width: 73rem) {
+  footer {
+    grid-area: footer;
+  }
+}
+
+/*# sourceMappingURL=styles.css.map */

@@ -1,0 +1,166 @@
+@use 'variables' as *;
+@use 'mixins';
+
+nav {
+    position: fixed;
+    display: none;
+    top: $header-height-sm;
+    background-color: $color-dark;
+    color: $color-lighter;
+    font-family: $font-family-header;
+    width: 100%;
+    &::before {
+        z-index: 9;
+        content: "";
+        display:block;
+        position:absolute;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: $color-black;
+        opacity: 0.5;
+    }
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        display:flex;
+        width: 100%;
+        flex-direction: column;
+        .spacer {
+            display: none;
+            width: 1rem;
+        }
+        li {
+            z-index: 99;
+            width: 100%;
+            font-size: 2rem;
+            &::after {
+                content: "";
+                display:block;
+                margin: 0 auto;
+                height: 2px;
+                width: 100%;
+                background:mixins.ease-in-out-right-gradient($color-dark, $color-medium, $color-dark);
+            }
+            &:last-child::after {
+                display: none;
+            }
+            &.active {
+                color: $color-white;
+            }
+        }
+        a {
+            display:block;
+            padding: 1rem;
+            text-decoration: none;
+            color: inherit;
+            &:hover {
+                background-color: $color-darker;
+                color: $color-white;
+            }
+            &:focus {
+                background-color: $color-black;
+                color: $color-white;
+            }
+        }
+    }
+}
+
+
+@media (min-width: $medium-min-width) {
+    nav {
+        display: block;
+        position: static;
+        font-size: 2rem;
+        &::before {
+            display: none;
+        }
+        ul {
+            flex-direction: row;
+            li {
+                width: auto;
+                display:flex;
+                align-items: center;
+                &::after {
+                    height: 75%;
+                    width: 2.4px;
+                    background: mixins.ease-in-out-down-gradient($color-dark, $color-medium, $color-dark);
+                    margin: 0;
+                }
+                &:last-child::after {
+                    display: block;
+                }
+            }
+            .spacer {
+                display: block;
+                display:flex;
+                align-items: center;
+                &::after {
+                    margin-left: auto;
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: $large-min-width) {
+    nav {
+        font-size:1.25rem;
+    }
+}
+
+@media (min-width: $giant-min-width) {
+    nav {
+        grid-area: sidebar;
+        background-color: $color-white;
+        padding: 1rem 1rem 1rem 3rem;
+        ul {
+            flex-direction: column;
+            width: 22rem;
+            .spacer {
+                display: none
+            }
+            li {
+                flex-direction: row-reverse;
+                background-color: $color-darker;
+                text-align: end;
+                height: 4rem;
+                margin: .5rem;
+                justify-content: space-between;
+                &::after {
+                    display:block;
+                    height: 100%;
+                    width: 9rem;
+                    z-index: 100;
+                    background: mixins.ease-in-out-right-gradient($color-white, $color-darker);
+                }
+                &:hover::after {
+                    background: mixins.ease-in-out-right-gradient($color-white, $color-black);
+
+                }
+                &:hover {
+                    background-color: $color-black;
+                }
+                &.active {
+                    flex-direction: row;
+                    background-color: $color-black;
+                    &::after {
+                        background: mixins.ease-in-out-right-gradient($color-black, $color-white);
+                    }
+                    &:hover::after {
+                        background: mixins.ease-in-out-right-gradient($color-black, $color-white);
+                    }
+                }
+            }
+            a {
+                &:hover, &:focus {
+                    background-color: transparent;
+                    color: $color-white;
+                }
+
+            }
+        }
+    }
+}

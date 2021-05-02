@@ -1,0 +1,24 @@
+@use 'variables' as *;
+@use 'mixins';
+
+main {
+    padding: 1rem 1rem 0 1rem;
+    width: 100%;
+    margin-top: $header-height-sm;
+    aside {
+        text-align: center;
+    }
+}
+
+
+@media (min-width: $medium-min-width) {
+    main {
+        margin-top: 0;
+    }
+}
+
+@media (min-width: $giant-min-width) {
+    main {
+        grid-area: main;
+    }
+}

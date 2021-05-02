@@ -1,0 +1,111 @@
+@use 'variables' as *;
+
+$-header-height-md: 9rem;
+$-header-height-lg: 12rem;
+$-header-height-giant: 22rem;
+$-header-padding: 1rem;
+
+.giantlogo {
+    display: none;
+}
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    background-color: $color-lighter;
+    color: $color-darker;
+    font-family: $font-family-header;
+    align-items: center;
+    height: $header-height-sm;
+    img {
+        padding: $-header-padding;
+        display: block;
+        height: 100%;
+    }
+    h1 {
+        text-align: center;
+        font-size: 1.5rem;
+        margin: 0;
+        .breakpoint {
+            display: table;
+        }
+    }
+    a {
+        display: flex;
+        margin: 0 1rem 0 0;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        text-decoration: none;
+        &:focus, &:hover {
+            background-color: $color-light;
+        }
+    }
+    .hamburger {
+        display: block;
+        font-size: 2rem;
+        color: $color-darker;
+        padding: .75rem 1rem;
+        cursor: pointer;
+    }
+}
+
+@media (min-width: $medium-min-width) {
+    header {
+        position: static;
+        padding: $-header-padding;
+        height: $-header-height-md;
+        h1 {
+            text-align: end;
+            font-size: 3rem;
+        }
+        img {
+            padding: 0rem;
+        }
+        a {
+            display: none;
+        }
+    }
+}
+
+@media (min-width: $large-min-width) {
+    header {
+        height:$-header-height-lg;
+        h1 {
+            font-size: 5rem;
+        }
+        img {
+            padding: .25rem;
+        }
+
+    }
+}
+
+@media (min-width: $giant-min-width) {
+    header {
+        background-color: transparent;
+        grid-area: header;
+        padding: 0;
+        height: auto;
+        h1 {
+            .breakpoint {
+                display: none;
+            }
+            font-size: 8rem;
+            text-align: start;
+            writing-mode: vertical-rl;
+            white-space: nowrap;
+        }
+    }
+    .logo {
+        display:none;
+    }
+    .giantlogo {
+        display: block;
+        padding: 2rem;
+        width: 100%;
+        grid-area: logo;
+    }
+}

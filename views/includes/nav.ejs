@@ -1,5 +1,6 @@
-<nav class="">
+<nav id="nav">
     <ul class="nav-ul">
+        <li class="spacer" aria-hidden="true"></li>
         <% links.forEach((link) => { %>
             <li class="nav-item <%= path === link.path ? 'active' : ''%>">
                 <a href="<%= link.path %>"><%= link.title %></a>
