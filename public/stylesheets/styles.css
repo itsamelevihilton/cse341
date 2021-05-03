@@ -15,7 +15,7 @@ body {
   font-size: 1.5rem;
 }
 
-h2, h3, h4, h5, h6 {
+h2, h3, h4, h5, h6, button {
   font-family: Acme, Arial, Helvetica, sans-serif;
   font-weight: 300;
 }
@@ -39,7 +39,7 @@ p {
     margin: 2rem auto;
     display: grid;
     max-width: 86rem;
-    grid-template-columns: 26rem auto 10rem;
+    grid-template-columns: 26rem minmax(0, 1fr) 10rem;
     grid-template-rows: 26rem auto;
     grid-template-areas: "logo main header" "sidebar main header" "footer footer footer";
   }
@@ -54,8 +54,8 @@ header {
   width: 100%;
   display: flex;
   justify-content: space-between;
-  background-color: #7ae9e9;
-  color: #003232;
+  background-color: #aae9e9;
+  color: #004242;
   font-family: Acme, Arial, Helvetica, sans-serif;
   align-items: center;
   height: 6rem;
@@ -87,7 +87,7 @@ header a:focus, header a:hover {
 header .hamburger {
   display: block;
   font-size: 2rem;
-  color: #003232;
+  color: #004242;
   padding: 0.75rem 1rem;
   cursor: pointer;
 }
@@ -153,7 +153,7 @@ nav {
   display: none;
   top: 6rem;
   background-color: #1e5a5a;
-  color: #7ae9e9;
+  color: #aae9e9;
   font-family: Acme, Arial, Helvetica, sans-serif;
   width: 100%;
 }
@@ -207,7 +207,7 @@ nav ul a {
   color: inherit;
 }
 nav ul a:hover {
-  background-color: #003232;
+  background-color: #004242;
   color: #e5ffff;
 }
 nav ul a:focus {
@@ -270,7 +270,7 @@ nav ul a:focus {
   }
   nav ul li {
     flex-direction: row-reverse;
-    background-color: #003232;
+    background-color: #004242;
     text-align: end;
     height: 4rem;
     margin: 0.5rem;
@@ -281,7 +281,7 @@ nav ul a:focus {
     height: 100%;
     width: 9rem;
     z-index: 100;
-    background: linear-gradient(to right, #e5ffff, #e4fefe, #e0fbfb, #dbf6f6, #d3efef, #c8e5e5, #bcdada, #adcdcd, #9cbdbd, #88acac, #739999, #5d8585, #497474, #386464, #295757, #1d4c4c, #124242, #0a3b3b, #053636, #013333, #003232);
+    background: linear-gradient(to right, #e5ffff, #e4fefe, #e0fbfb, #dbf6f6, #d3f0f0, #c8e7e7, #bcdddd, #add1d1, #9cc3c3, #88b2b2, #73a1a1, #5d8f8f, #497e7e, #387070, #296464, #1d5a5a, #125151, #0a4b4b, #054646, #014343, #004242);
   }
   nav ul li:hover::after {
     background: linear-gradient(to right, #e5ffff, #e4fefe, #e0fbfb, #dbf5f5, #d3eded, #c8e3e3, #bcd7d7, #adc8c8, #9cb7b7, #88a4a4, #738f8f, #5d7979, #496666, #385555, #294747, #1d3a3a, #123030, #0a2828, #052323, #011f1f, #001e1e);
@@ -311,6 +311,130 @@ main {
 }
 main aside {
   text-align: center;
+}
+main section {
+  width: 100%;
+  padding: 1rem;
+}
+
+h3 {
+  font-size: 1.75rem;
+}
+
+form {
+  font-family: Acme, Arial, Helvetica, sans-serif;
+}
+form fieldset {
+  display: block;
+  text-align: end;
+  background-color: #44d2d2;
+  border: none;
+  padding: 1rem 1rem 1rem 3rem;
+}
+form fieldset legend {
+  font-size: 1.75rem;
+  position: relative;
+  top: 2rem;
+}
+form fieldset p {
+  margin-top: 4rem;
+  text-align: end;
+  position: relative;
+  width: 100%;
+}
+form fieldset p::before {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 3rem;
+  z-index: 100;
+  background: linear-gradient(to bottom, #44d2d2, #45d2d2, #48d3d3, #4cd4d4, #53d6d6, #5bd8d8, #66dada, #72dddd, #80e0e0, #90e4e4, #a2e9e9, #b3eded, #c3f1f1, #d1f4f4, #ddf7f7, #e8f9f9, #f0fbfb, #f7fdfd, #fbfefe, #feffff, white);
+}
+form label {
+  font-size: 1.75rem;
+  left: -2.5rem;
+  top: 3.5rem;
+  position: absolute;
+}
+form input[type=text] {
+  font-family: inherit;
+  font-size: 2rem;
+  display: block;
+  width: 100%;
+  background-color: white;
+  border: none;
+  padding: 0.5rem 1.5rem;
+}
+form input[type=text]:focus {
+  outline: none;
+}
+form textarea {
+  display: block;
+  font-size: 1.2rem;
+  width: 100%;
+  height: 20rem;
+  padding: 1rem;
+  border: none;
+  resize: none;
+  font-family: "Noticia Text", Georgia, "Times New Roman", serif;
+}
+form textarea:focus {
+  outline: none;
+}
+
+.button {
+  border: none;
+  padding: 1rem 2rem;
+  margin: 0;
+  text-decoration: none;
+  background-color: #1e5a5a;
+  color: #aae9e9;
+  font-size: 1.5rem;
+  cursor: pointer;
+  text-align: center;
+  transition: background 250ms ease-in-out, transform 150ms ease;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+.button:hover, .button:focus {
+  background-color: #004242;
+}
+.button:focus {
+  outline: 1px solid #e5ffff;
+  outline-offset: -4px;
+}
+.button:active {
+  transform: scale(0.99);
+}
+
+.book-overview {
+  display: block;
+  border: none;
+  padding: 0.5rem 2rem;
+  font-size: 1.25rem;
+  width: 100%;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  margin: 0 0 0.5rem 0;
+  background-color: #aae9e9;
+}
+.book-overview:hover, .book-overview:focus {
+  background-color: #e5ffff;
+  outline: 3px solid #aae9e9;
+}
+.book-overview:active {
+  transform: scale(0.99);
+}
+.book-overview .book-overview-title {
+  font-size: 1.5rem;
+}
+.book-overview .book-overview-summary {
+  font-family: "Noticia Text", Georgia, "Times New Roman", serif;
+}
+
+.book-summary {
+  white-space: pre-line;
 }
 
 @media (min-width: 40rem) {

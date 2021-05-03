@@ -111,6 +111,6 @@ $-number-of-steps:20;
         $-params: $-params + ', ' + $-step;
     }
     $-result: linear-gradient(#{$-params});
-    @debug $-result;
+    // @debug $-result;
     @return $-result;
 }

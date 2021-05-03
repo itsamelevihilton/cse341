@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include ("../includes/head.ejs") %>
+  <script src="/scripts/prove02.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <%- include ("../includes/header.ejs") %>
+    <%- include ("../includes/nav.ejs") %>
+    <main class="">
+        <section>
+            <h2><%= book.title %></h2>
+            <input id="index" name="index" hidden aria-hidden="true" value="<%= index %>">
+            <p class="book-summary"><%= book.summary %> </p>
+        </section>
+        <section>
+            <button class="button" onclick="deleteBook()">Remove Book</button>
+            <button class="button" onclick="listBooks()">Return to List</button>
+            <button class="button">Add a Book</button>
+        </section>
+    </main>
+    <%- include ("../includes/footer.ejs") %>
+</body>
+</html>

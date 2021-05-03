@@ -14,7 +14,7 @@ body {
     width: 100%;
     font-size: 1.5rem;
 }
-h2, h3, h4, h5, h6 {
+h2, h3, h4, h5, h6, button {
     font-family: $font-family-header;
     font-weight: 300;
 }
@@ -37,7 +37,7 @@ p {
         margin: 2rem auto;
         display: grid;
         max-width: 86rem;
-        grid-template-columns: 26rem auto 10rem;
+        grid-template-columns: 26rem minmax(0, 1fr) 10rem;
         grid-template-rows: 26rem auto;
         grid-template-areas:
             "logo main header"

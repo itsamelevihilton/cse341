@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include ("../includes/head.ejs") %>
+  <script src="/scripts/prove02.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <%- include ("../includes/header.ejs") %>
+    <%- include ("../includes/nav.ejs") %>
+    <main class="">
+        <section>
+            <h2>Book Summaries</h2>
+            <% if (books.length > 0) { %>
+                <h3>Please select a book </h3>
+                <% books.forEach((book, index) => { %>
+                    <button class="book-overview" onclick="openBook(Number('<%= index %>'))"><span class="book-overview-title"><%= book.title %>:</span>  <span class="book-overview-summary"><%= book.summary %></span></button>
+                <% }) %>
+            <% } else { %>
+                <h3>There aren't any books.  Please add a book by clicking on the button below.</h3>
+            <% } %>
+            <button class="button" onclick="toInput()">Add a book</button>
+        </section>
+    </main>
+    <%- include ("../includes/footer.ejs") %>
+</body>
+</html>

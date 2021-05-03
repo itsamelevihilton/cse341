@@ -5,29 +5,25 @@ const dF = require('../utils/dateFormatter');
 
 var books = [];
 
-router.get('/list', (req, res, next) => {
-    const stats = fs.statSync('./views/pages/prove02list.ejs');
-    res.render('pages/prove02list', {
-        links: req.app.locals.links,
-        title: 'Book List - WK 02',
-        description: 'A list of the current books that are loaded',
-        path: 'prove02/list',
-        modified: dF.formatDate(stats.mtime),
-        books: books
-    });
-});
-
 router.post('/viewBook', (req, res, next) => {
     const stats = fs.statSync('./views/pages/prove02display.ejs');
-    var booknum = req.body.booknum;
+    var booknum = req.body.index;
     res.render('pages/prove02display', {
         links: req.app.locals.links,
         description: 'A book title along with it\'s summary',
         title: `${books[booknum].title} View`,
-        path: 'prove02/display',
+        path: '/prove02',
         modified: dF.formatDate(stats.mtime),
-        book: books[booknum]
+        book: books[booknum],
+        index: booknum
     });
+});
+
+router.post('/deleteBook', (req, res, next) => {
+    const stats = fs.statSync('./views/pages/prove02display.ejs');
+    var booknum = req.body.index;
+    books.splice(booknum, 1);
+    next();
 });
 
 router.post('/addBook', (req, res, next) => {
@@ -36,17 +32,29 @@ router.post('/addBook', (req, res, next) => {
         summary: req.body.summary
     }
     books.push(newbook);
-    res.writeHead(302, {'Location': '/prove02/list'});
+    next();
 });
 
-router.get('/', (req, res, next) => {
+router.get('/input', (req, res, next) => {
     const stats = fs.statSync('./views/pages/prove02input.ejs');
     res.render('pages/prove02input', {
         links: req.app.locals.links,
-        title: 'Input Book - WK 02',
+        title: 'Input Book',
         description: 'A place to input your books ',
         modified: dF.formatDate(stats.mtime),
-        path: 'prove02/input'
+        path: '/prove02'
+    });
+});
+
+router.use('/', (req, res, next) => {
+    const stats = fs.statSync('./views/pages/prove02list.ejs');
+    res.render('pages/prove02list', {
+        links: req.app.locals.links,
+        title: 'Book List',
+        description: 'A list of the current books that are loaded',
+        path: '/prove02',
+        modified: dF.formatDate(stats.mtime),
+        books: books
     });
 });
 

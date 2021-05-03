@@ -1,7 +1,10 @@
 const express = require('express');
 const path = require('path');
-const PORT = process.env.PORT || 5000;
+const favicon = require('serve-favicon');
 const fs = require('fs');
+
+const PORT = process.env.PORT || 5000;
+
 const dF = require('./utils/dateFormatter');
 
 const app = express();
@@ -20,7 +23,7 @@ app.locals.links = [
     },
     {
         title: 'Prove 02',
-        path: '/prove02/list'
+        path: '/prove02'
     }
 ]
 
@@ -31,6 +34,7 @@ app.use(express.static(path.join(__dirname, 'public')))
     .use(express.json())
     .use('/prove02', prove02Routes)
     .use('/aboutme', aboutMeRoutes)
+    .use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')))
     .get('/', (req, res, next) => {
         const stats = fs.statSync('./views/pages/index.ejs');
         res.render('pages/index', {

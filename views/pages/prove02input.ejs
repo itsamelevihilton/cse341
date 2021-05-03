@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include ("../includes/head.ejs") %>
+  <script src="/scripts/prove02.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <%- include ("../includes/header.ejs") %>
+    <%- include ("../includes/nav.ejs") %>
+    <main class="">
+        <section>
+            <h2>Add Book</h2>
+            <form autocomplete="off" method="POST" action="/prove02/addBook">
+                <fieldset>
+                    <legend>Input the new book's data here:</legend>
+                    <p>
+                        <label for="title"><span class="fas fa-book"></span></label>
+                        <input type="text" name="title" placeholder="Harry Potter">
+                    </p>
+                    <p>
+                        <label for="summary"><span class="fas fa-book-open"></span></label>
+                        <textarea name="summary" placeholder="This book is about a cupboard."></textarea>
+                    </p>
+                    <button type="submit" class="button">Add Book</button>
+                </fieldset>
+            </form>
+        </section>
+        <section>
+            <button class="button" onclick="listBooks()">Return to List</button>
+        </section>
+    </main>
+    <%- include ("../includes/footer.ejs") %>
+</body>
+</html>
