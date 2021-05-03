@@ -1,0 +1,34 @@
+After completing the assignment, be sure to push to Github and Heroku.
+Please answer the questions in this text file and submit it to I-Learn.
+
+1. Copy and paste the URL for your web application (e.g., Heroku):
+https://cse341portfolio.herokuapp.com/prove02
+
+2. Copy and paste the URL for your source code repository (e.g., GitHub):
+https://github.com/itsamelevihilton/cse341
+
+3. Briefly list and describe the elements of the application that are functioning. 
+You are able to add books to a list.
+You are able to see a list of the currently saved books.
+You are able to display whichever book you would like to see completely.
+You are able to delete books from the list.
+There are also a couple of other links that show a landing page and an about me page.
+
+4. Briefly describe any pieces of the assignment that are not yet working correctly.
+The about me page doesn't currently have any content.
+
+5. Briefly describe the "coolest" thing you learned while completing this assignment.
+I was able to write code that gives me a lot cleaner gradients that ease in and out.  This uses Sass which I hope isn't against the rules.  We had bootstrap linked in the main site, so I can't imagine sass would be out of bounds.
+
+6. If you could change this assignment to be more effective or helpful, what would you change?
+I think it could be helpful to more explicitly define the requirements for the assignment.  It seemed very vague at first.  A video going over what the assignment requirements are would be helpful.
+
+7. Please select the category you feel best describes your assignment: 5
+   1 - Some attempt was made
+   2 - Developing, but significantly deficient
+   3 - Slightly deficient, but still mostly adequate
+   4 - Meets requirements
+   5 - Shows creativity and excels above and beyond requirements
+
+8. Provide a brief justification (1-2 sentences) for selecting that category.
+I beilieve that I went above and beyond to create ways to see a list of all current books as well as remove them from the list.  I think that from a design standpoint I've done a lot of things to make adding additional pages to the site easier as well as making it a pleasant experience for the user.
