@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <%- include ("../../../partials/head.ejs") %>
+</head>
+
+<body>
+  <%- include ("../../../partials/header.ejs") %>
+  <%- include ("../../../partials/nav.ejs") %>
+  <main>
+    <section>
+      <h1>Team Activity</h1>
+      <% for(var i=0; i < names.length; i++) { %>
+        <p><%= names[i] %></p>
+      <% } %>
+
+      <form method="POST" action="/wk02/ta/addUser">
+        <label for="name">Add</label>
+        <input type="text" name="name">
+        <button type="submit">Submit</button>
+      </form>
+
+      <form method="POST" action="/wk02/ta/removeUser">
+        <label for="name">Remove</label>
+        <input type="text" name="name">
+        <button type="submit">Submit</button>
+      </form>
+
+    </section>
+  </main>
+
+<%- include ("../../../partials/footer.ejs") %>
+
+</body>
+</html>

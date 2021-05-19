@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <%- include ("../includes/head.ejs") %>
+    <%- include ("../partials/head.ejs") %>
 </head>
 
 <body>
-    <%- include ("../includes/header.ejs") %>
-    <%- include ("../includes/nav.ejs") %>
-    <main class="">
-        <div class="">
+    <%- include ("../partials/header.ejs") %>
+    <%- include ("../partials/nav.ejs") %>
+    <main>
+        <section>
             <h2><%= title %></h2>
             <p>The page you were looking for at <%= path %> does not exist.</p>
-        </div>
+        </section>
     </main>
-    <%- include ("../includes/footer.ejs") %>
+    <%- include ("../partials/footer.ejs") %>
 </body>
 </html>

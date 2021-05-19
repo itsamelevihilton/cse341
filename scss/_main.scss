@@ -1,103 +1,164 @@
 @use 'variables' as *;
-@use 'mixins';
+@use 'better-gradients' as bg;
+
+#index {
+    display:none;
+}
 
 main {
-    padding: 1rem 1rem 0 1rem;
-    width: 100%;
-    margin-top: $header-height-sm;
-    aside {
-        text-align: center;
-    }
-    section {
-        width: 100%;
+    grid-area: main;
+    margin: 0 1rem;
+    nav {
         padding: 1rem;
-    }
-}
-h3 {
-    font-size: 1.75rem;
-}
-form {
-    font-family: $font-family-header;
-    fieldset {
-        display: block;
-        text-align: end;
-        background-color: $color-light;
-        border: none;
-        padding: 1rem 1rem 1rem 3rem;
-        legend {
-            font-size: 1.75rem;
-            position:relative;
-            top: 2rem;
-        }
-        p {
-            margin-top: 4rem;
-            text-align: end;
-            position:relative;
-            width: 100%;
-            &::before { 
-                content: "";
-                display:block;
+        grid-area:subnav;
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: space-between;
+            li {
+                margin: .5rem;
                 width: 100%;
-                height: 3rem;
-                z-index: 100;
-                background: mixins.ease-in-out-down-gradient($color-light, white);
+                text-align: center;
+                display: flex;
+                flex-direction: column;
+                &::before {
+                    display: block;
+                    content: "";
+                    height: 2rem;
+                    background: bg.ease-in-out-down-gradient($color-lighter, $color-darker);
+                }
+                a {
+                    text-decoration: none;
+                    display: block;
+                    height: 3rem;
+                    padding: .5rem;
+                    width: 100%;
+                    background-color: $color-darker;
+                    color: $color-lighter;
+                }
+                &.active, &:focus {
+                    flex-direction: column-reverse;
+                    a {
+                        background-color: $color-blackest;
+                        color: $color-white;
+                        text-align: start;
+                    }
+                    &::before {
+                        background: bg.ease-in-out-down-gradient($color-blackest, $color-lighter);
+                    }
+                }
+                &:not(.active):hover {
+                    &::before {
+                        background: bg.ease-in-out-down-gradient($color-lighter, $color-black);
+                    }
+                    a {
+                        background-color: $color-black;
+                    }
+                }
             }
         }
     }
-    label {
-        font-size: 1.75rem;
-        left: -2.5rem;
-        top: 3.5rem;
-        position:absolute;
+    section {
+        background-color: $color-lightest;
+        margin: 1rem;
+        padding: 1rem 2rem;
+        h2 {
+            font-size: 30pt;
+            margin: 1rem 0 .5rem 0;
+        }
+        h3 {
+            font-size: 24pt;
+            margin: 1rem 0 .25rem 0;
+        }
+        p {
+            font-family: $contentFontFamily;
+        }
     }
-    input[type="text"] {
-        font-family:inherit;
-        font-size: 2rem;
-        display:block;
-        width: 100%;
-        background-color: white;
-        border:none;
-        padding: .5rem 1.5rem;
+    form {
+        fieldset {
+            border: none;
+            legend {
+                padding: 0;
+                font-size: 22pt;
+                padding-left: 1.2rem;
+            }
+            label {
+                display: block;
+                font-size: 10pt;
+            }
+            .buttons {
+                display: flex;
+                justify-content: space-between;
+                flex-wrap: wrap;
+                button, input[type=button], .button {
+                    width: 100%;
+                    margin: .5rem;
+                }
+            }
+        }
+    }
+    button, input[type=button], .button {
+        appearance: none;
+        padding: .25rem .75rem;
+        font-size: 20pt;
+        background-color: $color-whitest;
+        border: 2px solid $color-lighter;
+        border-radius: .5rem;
+        color: $color-darker;
+        font-family: $headerFontFamily;
+        &:hover {
+            background-color: $color-whiter;
+            color: $color-blackest;
+            border: 2px solid $color-light;
+        }
         &:focus {
-            outline: none
+            background-color: $color-white;
+            border: 2px solid  $color-dark;
+            transform: scale(0.99);
         }
     }
     textarea {
-        display:block;
-        font-size:1.2rem;
-        width: 100%;
-        height: 20rem;
-        padding: 1rem;
-        border:none;
+        display: block;
         resize: none;
-        font-family: $font-family-content;
+        width: 100%;
+        height: 16rem;
+        background-color: $color-whitest;
+        color: $color-black;
+        padding: .5rem;
+        border: 2px solid $color-lighter;
+        border-radius: .5rem;
+        font-family: $contentFontFamily;
+        font-size: 12pt;
+        &:hover {
+            border-color: $color-light;
+        }
         &:focus {
             outline: none;
+            border-color: $color-dark;
+            transform: scale(0.99);
         }
     }
-}
-.button {
-    border: none;
-    padding: 1rem 2rem;
-    margin: 0;
-    text-decoration: none;
-    background-color: $color-dark;
-    color: $color-lighter;
-    font-size: 1.5rem;
-    cursor: pointer;
-    text-align: center;
-    transition: background 250ms ease-in-out, transform 150ms ease;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    &:hover, &:focus {
-        background-color: $color-darker;
-    }
-    &:focus {
-        outline: 1px solid $color-white;
-        outline-offset: -4px;
-    }
-    &:active {
-        transform: scale(0.99);
+    input {
+        appearance: none;
+        display: block;
+        width: 100%;
+        font-size: 2rem;
+        border: 2px solid $color-lighter;
+        border-radius: .5rem;
+        padding: .5rem 1rem;
+        color: $color-black;
+        background-color: $color-whitest;
+        font-family: $contentFontFamily;
+        &:hover {
+            border-color: $color-light;
+        }
+        &:focus {
+            outline: none;
+            border-color: $color-dark;
+            transform: scale(0.99);
+        }
     }
 }
 .book-overview {
@@ -110,10 +171,9 @@ form {
     overflow: hidden;
     white-space: nowrap;
     margin:0 0 .5rem 0;
-    background-color: $color-lighter;
+    background-color: $color-white;
     &:hover, &:focus {
-        background-color: $color-white;
-        outline: 3px solid $color-lighter;
+        background-color: $color-whitest;
     }
     &:active {
         transform: scale(0.99);
@@ -122,7 +182,7 @@ form {
         font-size: 1.5rem;
     }
     .book-overview-summary {
-        font-family: $font-family-content;
+        font-family: $contentFontFamily;
     }
 }
 .book-summary {
@@ -130,14 +190,18 @@ form {
 }
 
 
-@media (min-width: $medium-min-width) {
+@media (min-width: $min-width-med) {
     main {
         margin-top: 0;
-    }
-}
-
-@media (min-width: $giant-min-width) {
-    main {
-        grid-area: main;
+        form {
+            fieldset {
+                .buttons {
+                    flex-wrap: nowrap;
+                    button, input[type=button], .button {
+                        margin: 0 .5rem;
+                    }
+                }
+            }
+        }
     }
 }

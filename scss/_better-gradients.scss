@@ -1,0 +1,127 @@
+@use 'sass:list';
+@use 'sass:color';
+@use 'sass:math';
+
+$-number-of-steps:20;
+
+
+@function ease-in-out-quad($-x) {
+    $-result: 0.0;
+    @if $-x < 0.5 {
+        $-result: 2 * $-x * $-x;
+    }
+    @else {
+        $-result: -1 + (4 - 2 * $-x) * $-x;
+    }
+    @return $-result;
+}
+@function ease-in-over($-x) {
+    $-result: 12 * math.pow($-x, 4) - 26 * math.pow($-x, 3) + 15 * $-x * $-x;
+    @return $-result;
+}
+@function ease-in-out-flat-quad($-x) {
+    $-result: 0.0;
+    @if $-x < 0.5 {
+        $-result: 7.5 * $-x * $-x - (2.75 * $-x);
+    }
+    @else {
+        $-result: -7.5 * $-x * $-x + 12.25 * $-x - 3.75;
+    }
+    @return $-result;
+}
+@function ease-in-out-cubic($-x) {
+    $-result: 0.0;
+    @if $-x < 0.5 {
+        $-result: 4 * $-x * $-x * $-x;
+    }
+    @else {
+        $-result: ($-x - 1) * (2 * $-x - 2) * (2 * $-x - 2) + 1;
+    }
+    @return $-result;
+}
+@function generateSteps($-num-steps, $-method: 'cubic') {
+    $-result: [];
+    @for $-i from 1 through $-num-steps {
+        $-x: (1.0 / $-num-steps) * $-i;
+        @if $-method == 'over' {
+            $-result: list.append($-result, ease-in-over($-x));
+        }
+        @if $-method == 'quad' {
+            $-result: list.append($-result, ease-in-out-quad($-x));
+        }
+        @if $-method == 'cubic' {
+            $-result: list.append($-result, ease-in-out-cubic($-x));
+        }
+    }
+    @return $-result;
+}
+
+@function ease-in-out-two($-starting-color, $-ending-color, $-shape) {
+    $-a-red: color.red($-starting-color);
+    $-a-green: color.green($-starting-color);
+    $-a-blue: color.blue($-starting-color);
+    $-a-alpha: color.alpha($-starting-color);
+    // @debug "Starting:  Red: " + $-a-red + "  Green: " + $-a-green + "  Blue: " + $-a-blue + "  Alpha: " + $-a-alpha;
+    $-b-red: color.red($-ending-color);
+    $-b-green: color.green($-ending-color);
+    $-b-blue: color.blue($-ending-color);
+    $-b-alpha: color.alpha($-ending-color);
+    // @debug "Ending:  Red: " + $-b-red + "  Green: " + $-b-green + "  Blue: " + $-b-blue + "  Alpha: " + $-b-alpha;
+    $-total-color-difference-red: $-a-red - $-b-red;
+    $-total-color-difference-blue: $-a-blue - $-b-blue;
+    $-total-color-difference-green: $-a-green - $-b-green;
+    $-total-color-difference-alpha: $-a-alpha - $-b-alpha;
+    // @debug "Difference:  Red: " + $-total-color-difference-red + "  Green: " + $-total-color-difference-green + "  Blue: " + $-total-color-difference-blue + "  Alpha: " + $-total-color-difference-alpha;
+    $-rgb-list: [];
+    @each $-step in generateSteps($-number-of-steps, $-shape) {
+        $-r: $-a-red + (-1 * $-total-color-difference-red * $-step);
+        $-b: $-a-blue + (-1 * $-total-color-difference-blue * $-step);
+        $-g: $-a-green + (-1 * $-total-color-difference-green * $-step);
+        $-a: $-a-alpha + (-1 * $-total-color-difference-alpha * $-step);
+        $-rgb-list: list.append($-rgb-list, rgba($-r, $-g, $-b, $-a));
+        // @debug "Step: " + $-step + "  Red: " + $-r + "  Green: " + $-g + "  Blue: " + $-b + "  Alpha: " + $-a;
+    }
+    // @debug $-rgb-list;
+    @return $-rgb-list
+}
+@function ease-in-out-three($-starting-color, $-middle-color, $-ending-color, $-shape) {
+    $-rgb-list: ease-in-out-two($-starting-color, $-middle-color, $-shape);
+    @each $-color in ease-in-out-two($-middle-color, $-ending-color, $-shape) {
+        $-rgb-list: list.append($-rgb-list, $-color);
+    }
+    @return $-rgb-list;
+}
+
+@function ease-in-out-right-gradient($-starting-color, $-middle-color, $-ending-color: false, $-shape:'cubic') {
+    $-params:'to right';
+    $-steps: [];
+    @if $-ending-color {
+        $-steps: ease-in-out-three($-starting-color, $-middle-color, $-ending-color, $-shape);
+    }
+    @else {
+        $-steps: ease-in-out-two($-starting-color, $-middle-color, $-shape);
+    }
+    @each $-step in $-steps {
+        $-params: $-params + ', ' + $-step;
+    }
+    $-result: linear-gradient(#{$-params});
+    // @debug $-result;
+    @return $-result;
+}
+
+@function ease-in-out-down-gradient($-starting-color, $-middle-color, $-ending-color: false, $-shape:'cubic') {
+    $-params: 'to bottom';
+    $-steps: [];
+    @if $-ending-color {
+        $-steps: ease-in-out-three($-starting-color, $-middle-color, $-ending-color, $-shape);
+    }
+    @else {
+        $-steps: ease-in-out-two($-starting-color, $-middle-color, $-shape);
+    }
+    @each $-step in $-steps {
+        $-params: $-params + ', ' + $-step;
+    }
+    $-result: linear-gradient(#{$-params});
+    // @debug $-result;
+    @return $-result;
+}

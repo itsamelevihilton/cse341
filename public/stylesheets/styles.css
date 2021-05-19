@@ -1,163 +1,154 @@
-@import url("https://fonts.googleapis.com/css?family=Acme|Noticia+Text");
+@import url("https://fonts.googleapis.com/css?family=Roboto+Mono|Roboto+Slab");
 *, *::before, *::after {
   box-sizing: border-box;
 }
 
 :root {
-  background-color: #e5ffff;
-  font-size: 1.1rem;
+  font-family: "Roboto Mono", "Courier New", Courier, monospace;
+  background-color: #c1c1c1;
+  color: #212121;
 }
 
 body {
   margin: 0;
-  font-family: "Noticia Text", Georgia, "Times New Roman", serif;
-  width: 100%;
-  font-size: 1.5rem;
+  max-width: 80rem;
 }
 
-h2, h3, h4, h5, h6, button {
-  font-family: Acme, Arial, Helvetica, sans-serif;
-  font-weight: 300;
-}
-
-h2 {
-  font-size: 4rem;
-  margin: 1rem 0 0.5rem 0;
-}
-
-p {
-  margin-top: 0.25rem;
-}
-
-@media (min-width: 50rem) {
+@media (min-width: 58rem) {
   body {
-    font-size: 1rem;
-  }
-}
-@media (min-width: 73rem) {
-  body {
-    margin: 2rem auto;
     display: grid;
-    max-width: 86rem;
-    grid-template-columns: 26rem minmax(0, 1fr) 10rem;
-    grid-template-rows: 26rem auto;
-    grid-template-areas: "logo main header" "sidebar main header" "footer footer footer";
+    grid-template-columns: 12rem minmax(0, 1fr) 10rem;
+    grid-template-rows: minmax(2rem, auto) 12rem auto 1fr;
+    padding: 0 1rem;
+    margin: 1rem auto 1rem auto;
+    grid-template-areas: "blank1 subnav blank2" "logo main header" "nav main header" "footer footer footer";
+  }
+  body .logo {
+    grid-area: logo;
   }
 }
-.giantlogo {
+.primary-logo {
   display: none;
+  grid-area: logo;
 }
 
 header {
   position: fixed;
   top: 0;
+  text-align: center;
+  height: 6rem;
   width: 100%;
   display: flex;
   justify-content: space-between;
-  background-color: #aae9e9;
-  color: #004242;
-  font-family: Acme, Arial, Helvetica, sans-serif;
+  color: #414141;
+  font-family: "Roboto Mono", "Courier New", Courier, monospace;
   align-items: center;
   height: 6rem;
+  margin: 0.5rem 0;
 }
-header img {
-  padding: 1rem;
+header .secondary-logo {
+  height: 100%;
+  display: flex;
+}
+header .secondary-logo img {
   display: block;
   height: 100%;
+  background-color: #f5f5f5;
+  padding: 0.5rem;
+}
+header .secondary-logo::before {
+  display: block;
+  content: "";
+  width: 1rem;
+  height: 100%;
+  background: linear-gradient(to right, #c1c1c1, #c1c1c1, #c2c2c2, #c3c3c3, #c4c4c4, #c7c7c7, #cacaca, #cecece, #d4d4d4, #dbdbdb, #e2e2e2, #e8e8e8, #ececec, #efefef, #f2f2f2, #f3f3f3, #f4f4f4, whitesmoke, whitesmoke, whitesmoke);
+  grid-area: fade-in;
 }
 header h1 {
-  text-align: center;
-  font-size: 1.5rem;
-  margin: 0;
+  background-color: #f5f5f5;
+  width: 100%;
+  height: 100%;
 }
 header h1 .breakpoint {
   display: table;
 }
-header a {
+header .hamburger-container {
   display: flex;
-  margin: 0 1rem 0 0;
+  width: 6rem;
+  height: 100%;
+  background-color: #f5f5f5;
+}
+header .hamburger-container a {
+  display: flex;
+  padding: 0 0.5rem;
   flex-direction: column;
   justify-content: center;
-  text-align: center;
   text-decoration: none;
 }
-header a:focus, header a:hover {
-  background-color: #44d2d2;
+header .hamburger-container:focus, header .hamburger-container:hover {
+  background-color: #a1a1a1;
+}
+header .hamburger-container::after {
+  display: block;
+  content: "";
+  width: 30px;
+  height: 100%;
+  background: linear-gradient(to right, whitesmoke, whitesmoke, #f4f4f4, #f3f3f3, #f2f2f2, #efefef, #ececec, #e8e8e8, #e2e2e2, #dbdbdb, #d4d4d4, #cecece, #cacaca, #c7c7c7, #c4c4c4, #c3c3c3, #c2c2c2, #c1c1c1, #c1c1c1, #c1c1c1);
+  grid-area: fade-in;
 }
 header .hamburger {
   display: block;
   font-size: 2rem;
-  color: #004242;
+  color: #414141;
   padding: 0.75rem 1rem;
   cursor: pointer;
 }
 
-@media (min-width: 40rem) {
+@media (min-width: 58rem) {
+  .primary-logo {
+    display: block;
+  }
+
   header {
     position: static;
-    padding: 1rem;
-    height: 9rem;
-  }
-  header h1 {
-    text-align: end;
-    font-size: 3rem;
-  }
-  header img {
-    padding: 0rem;
-  }
-  header a {
-    display: none;
-  }
-}
-@media (min-width: 50rem) {
-  header {
-    height: 12rem;
-  }
-  header h1 {
-    font-size: 5rem;
-  }
-  header img {
-    padding: 0.25rem;
-  }
-}
-@media (min-width: 73rem) {
-  header {
-    background-color: transparent;
+    display: flex;
     grid-area: header;
-    padding: 0;
+    flex-direction: column;
     height: auto;
+    color: #212121;
   }
   header h1 {
-    font-size: 8rem;
+    font-size: 49pt;
+    padding: 1rem 0;
+    margin: 0 auto;
     text-align: start;
     writing-mode: vertical-rl;
-    white-space: nowrap;
+    height: auto;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    background-color: transparent;
   }
   header h1 .breakpoint {
     display: none;
   }
-
-  .logo {
+  header .secondary-logo {
     display: none;
   }
-
-  .giantlogo {
-    display: block;
-    padding: 2rem;
-    width: 100%;
-    grid-area: logo;
+  header .hamburger-container {
+    display: none;
   }
 }
-nav {
+#primary-nav {
   position: fixed;
   display: none;
-  top: 6rem;
-  background-color: #1e5a5a;
-  color: #aae9e9;
-  font-family: Acme, Arial, Helvetica, sans-serif;
+  top: 6.5rem;
+  background-color: #212121;
+  color: #c1c1c1;
+  font-family: "Roboto Mono", "Courier New", Courier, monospace;
   width: 100%;
 }
-nav::before {
+#primary-nav::before {
   z-index: 9;
   content: "";
   display: block;
@@ -166,10 +157,10 @@ nav::before {
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: #001e1e;
+  background-color: #313131;
   opacity: 0.5;
 }
-nav ul {
+#primary-nav ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
@@ -177,233 +168,316 @@ nav ul {
   width: 100%;
   flex-direction: column;
 }
-nav ul .spacer {
-  display: none;
-  width: 1rem;
-}
-nav ul li {
+#primary-nav ul li {
   z-index: 99;
   width: 100%;
-  font-size: 2rem;
+  font-size: 1.5rem;
 }
-nav ul li::after {
+#primary-nav ul li::after {
   content: "";
   display: block;
   margin: 0 auto;
   height: 2px;
   width: 100%;
-  background: linear-gradient(to right, #1e5a5a, #1e5a5a, #1e5b5b, #1f5d5d, #205f5f, #216262, #226565, #236969, #246d6d, #267272, #287878, #2a7e7e, #2c8383, #2d8787, #2e8b8b, #308f8f, #309191, #319393, #329595, #329696, #329696, #329696, #329696, #329595, #319393, #309191, #308f8f, #2e8b8b, #2d8787, #2c8383, #2a7e7e, #287878, #267272, #246d6d, #236969, #226565, #216262, #205f5f, #1f5d5d, #1e5b5b, #1e5a5a, #1e5a5a);
+  background: linear-gradient(to right, #616161, #616161, #616161, #626262, #636363, #646464, #666666, dimgray, #6d6d6d, #717171, #757575, #797979, #7c7c7c, #7e7e7e, #7f7f7f, gray, #818181, #818181, #818181, #818181, #818181, #818181, #818181, gray, #7f7f7f, #7e7e7e, #7c7c7c, #797979, #757575, #717171, #6d6d6d, dimgray, #666666, #646464, #636363, #626262, #616161, #616161, #616161, #616161);
 }
-nav ul li:last-child::after {
+#primary-nav ul li:last-child::after {
   display: none;
 }
-nav ul li.active {
-  color: #e5ffff;
+#primary-nav ul li.active {
+  color: #f0f0f0;
 }
-nav ul a {
+#primary-nav ul a {
   display: block;
   padding: 1rem;
   text-decoration: none;
   color: inherit;
 }
-nav ul a:hover {
-  background-color: #004242;
-  color: #e5ffff;
+#primary-nav ul a:hover {
+  background-color: #414141;
+  color: #f0f0f0;
 }
-nav ul a:focus {
-  background-color: #001e1e;
-  color: #e5ffff;
+#primary-nav ul a:focus {
+  background-color: #313131;
+  color: #f0f0f0;
 }
 
-@media (min-width: 40rem) {
-  nav {
+#secondary-nav {
+  padding: 0;
+  grid-area: subnav;
+  display: block;
+  margin-top: 7rem;
+}
+#secondary-nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
+}
+#secondary-nav ul li {
+  margin: 0.5rem;
+  width: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+#secondary-nav ul li::before {
+  display: block;
+  content: "";
+  height: 2rem;
+  background: linear-gradient(to bottom, #c1c1c1, silver, #bfbfbf, #bdbdbd, #b9b9b9, #b3b3b3, #ababab, #a0a0a0, #929292, #818181, #707070, #626262, #575757, #4f4f4f, #494949, #454545, #434343, #424242, #414141, #414141);
+}
+#secondary-nav ul li a {
+  padding: 0 1rem;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 3rem;
+  width: 100%;
+  background-color: #414141;
+  color: #c1c1c1;
+}
+#secondary-nav ul li.active, #secondary-nav ul li:focus {
+  flex-direction: column-reverse;
+}
+#secondary-nav ul li.active a, #secondary-nav ul li:focus a {
+  background-color: #212121;
+  color: #f0f0f0;
+}
+#secondary-nav ul li.active::before, #secondary-nav ul li:focus::before {
+  background: linear-gradient(to bottom, #212121, #222222, #232323, #262626, #2b2b2b, #323232, #3c3c3c, #4a4a4a, #5b5b5b, #717171, #878787, #989898, #a6a6a6, #b0b0b0, #b7b7b7, #bcbcbc, #bfbfbf, silver, #c1c1c1, #c1c1c1);
+}
+#secondary-nav ul li:not(.active):hover::before {
+  background: linear-gradient(to bottom, #c1c1c1, silver, #bfbfbf, #bcbcbc, #b8b8b8, #b1b1b1, #a8a8a8, #9c9c9c, #8d8d8d, #797979, #656565, #565656, #4a4a4a, #414141, #3a3a3a, #363636, #333333, #323232, #313131, #313131);
+}
+#secondary-nav ul li:not(.active):hover a {
+  background-color: #313131;
+}
+
+@media (min-width: 58rem) {
+  #primary-nav {
+    background-color: transparent;
+    grid-area: nav;
+    width: 100%;
     display: block;
     position: static;
-    font-size: 2rem;
   }
-  nav::before {
+  #primary-nav::before {
     display: none;
   }
-  nav ul {
-    flex-direction: row;
-  }
-  nav ul li {
-    width: auto;
-    display: flex;
-    align-items: center;
-  }
-  nav ul li::after {
-    height: 75%;
-    width: 2.4px;
-    background: linear-gradient(to bottom, #1e5a5a, #1e5a5a, #1e5b5b, #1f5d5d, #205f5f, #216262, #226565, #236969, #246d6d, #267272, #287878, #2a7e7e, #2c8383, #2d8787, #2e8b8b, #308f8f, #309191, #319393, #329595, #329696, #329696, #329696, #329696, #329595, #319393, #309191, #308f8f, #2e8b8b, #2d8787, #2c8383, #2a7e7e, #287878, #267272, #246d6d, #236969, #226565, #216262, #205f5f, #1f5d5d, #1e5b5b, #1e5a5a, #1e5a5a);
+  #primary-nav ul {
+    list-style-type: none;
     margin: 0;
+    padding: 0;
   }
-  nav ul li:last-child::after {
+  #primary-nav ul a {
+    text-decoration: none;
     display: block;
-  }
-  nav ul .spacer {
-    display: block;
-    display: flex;
-    align-items: center;
-  }
-  nav ul .spacer::after {
-    margin-left: auto;
-  }
-}
-@media (min-width: 50rem) {
-  nav {
-    font-size: 1.25rem;
-  }
-}
-@media (min-width: 73rem) {
-  nav {
-    grid-area: sidebar;
-    background-color: #e5ffff;
-    padding: 1rem 1rem 1rem 3rem;
-  }
-  nav ul {
-    flex-direction: column;
-    width: 22rem;
-  }
-  nav ul .spacer {
-    display: none;
-  }
-  nav ul li {
-    flex-direction: row-reverse;
-    background-color: #004242;
-    text-align: end;
-    height: 4rem;
-    margin: 0.5rem;
-    justify-content: space-between;
-  }
-  nav ul li::after {
-    display: block;
-    height: 100%;
+    height: 2rem;
     width: 9rem;
-    z-index: 100;
-    background: linear-gradient(to right, #e5ffff, #e4fefe, #e0fbfb, #dbf6f6, #d3f0f0, #c8e7e7, #bcdddd, #add1d1, #9cc3c3, #88b2b2, #73a1a1, #5d8f8f, #497e7e, #387070, #296464, #1d5a5a, #125151, #0a4b4b, #054646, #014343, #004242);
+    padding: 0.3rem 1rem;
+    text-align: end;
+    color: #c1c1c1;
+    background-color: #414141;
   }
-  nav ul li:hover::after {
-    background: linear-gradient(to right, #e5ffff, #e4fefe, #e0fbfb, #dbf5f5, #d3eded, #c8e3e3, #bcd7d7, #adc8c8, #9cb7b7, #88a4a4, #738f8f, #5d7979, #496666, #385555, #294747, #1d3a3a, #123030, #0a2828, #052323, #011f1f, #001e1e);
+  #primary-nav ul li {
+    display: flex;
+    flex-direction: row-reverse;
+    margin: 0.3rem auto;
+    font-size: 1rem;
   }
-  nav ul li:hover {
-    background-color: #001e1e;
+  #primary-nav ul li::after {
+    display: block;
+    content: "";
+    width: 3rem;
+    height: 2rem;
+    background: linear-gradient(to right, #c1c1c1, silver, #bfbfbf, #bdbdbd, #b9b9b9, #b3b3b3, #ababab, #a0a0a0, #929292, #818181, #707070, #626262, #575757, #4f4f4f, #494949, #454545, #434343, #424242, #414141, #414141);
   }
-  nav ul li.active {
+  #primary-nav ul li:last-child::after {
+    display: block;
+  }
+  #primary-nav ul li.active, #primary-nav ul li:focus {
     flex-direction: row;
-    background-color: #001e1e;
   }
-  nav ul li.active::after {
-    background: linear-gradient(to right, #001e1e, #011f1f, #052323, #0a2828, #123030, #1d3a3a, #294747, #385555, #496666, #5d7979, #738f8f, #88a4a4, #9cb7b7, #adc8c8, #bcd7d7, #c8e3e3, #d3eded, #dbf5f5, #e0fbfb, #e4fefe, #e5ffff);
+  #primary-nav ul li.active a, #primary-nav ul li:focus a {
+    background-color: #212121;
+    color: #f0f0f0;
+    text-align: start;
   }
-  nav ul li.active:hover::after {
-    background: linear-gradient(to right, #001e1e, #011f1f, #052323, #0a2828, #123030, #1d3a3a, #294747, #385555, #496666, #5d7979, #738f8f, #88a4a4, #9cb7b7, #adc8c8, #bcd7d7, #c8e3e3, #d3eded, #dbf5f5, #e0fbfb, #e4fefe, #e5ffff);
+  #primary-nav ul li.active::after, #primary-nav ul li:focus::after {
+    background: linear-gradient(to right, #212121, #222222, #232323, #262626, #2b2b2b, #323232, #3c3c3c, #4a4a4a, #5b5b5b, #717171, #878787, #989898, #a6a6a6, #b0b0b0, #b7b7b7, #bcbcbc, #bfbfbf, silver, #c1c1c1, #c1c1c1);
   }
-  nav ul a:hover, nav ul a:focus {
-    background-color: transparent;
-    color: #e5ffff;
+  #primary-nav ul li:not(.active):hover::after {
+    background: linear-gradient(to right, #c1c1c1, silver, #bfbfbf, #bcbcbc, #b8b8b8, #b1b1b1, #a8a8a8, #9c9c9c, #8d8d8d, #797979, #656565, #565656, #4a4a4a, #414141, #3a3a3a, #363636, #333333, #323232, #313131, #313131);
+  }
+  #primary-nav ul li:not(.active):hover a {
+    background-color: #313131;
+  }
+  #primary-nav ul li:focus {
+    transform: scale(0.99);
+  }
+
+  #secondary-nav {
+    padding: 0 3rem;
+    margin-top: 0;
   }
 }
+#index {
+  display: none;
+}
+
 main {
-  padding: 1rem 1rem 0 1rem;
-  width: 100%;
-  margin-top: 6rem;
+  grid-area: main;
+  margin: 0 1rem;
 }
-main aside {
+main nav {
+  padding: 1rem;
+  grid-area: subnav;
+}
+main nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
+}
+main nav ul li {
+  margin: 0.5rem;
+  width: 100%;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+main nav ul li::before {
+  display: block;
+  content: "";
+  height: 2rem;
+  background: linear-gradient(to bottom, #c1c1c1, silver, #bfbfbf, #bdbdbd, #b9b9b9, #b3b3b3, #ababab, #a0a0a0, #929292, #818181, #707070, #626262, #575757, #4f4f4f, #494949, #454545, #434343, #424242, #414141, #414141);
+}
+main nav ul li a {
+  text-decoration: none;
+  display: block;
+  height: 3rem;
+  padding: 0.5rem;
+  width: 100%;
+  background-color: #414141;
+  color: #c1c1c1;
+}
+main nav ul li.active, main nav ul li:focus {
+  flex-direction: column-reverse;
+}
+main nav ul li.active a, main nav ul li:focus a {
+  background-color: #212121;
+  color: #f0f0f0;
+  text-align: start;
+}
+main nav ul li.active::before, main nav ul li:focus::before {
+  background: linear-gradient(to bottom, #212121, #222222, #232323, #262626, #2b2b2b, #323232, #3c3c3c, #4a4a4a, #5b5b5b, #717171, #878787, #989898, #a6a6a6, #b0b0b0, #b7b7b7, #bcbcbc, #bfbfbf, silver, #c1c1c1, #c1c1c1);
+}
+main nav ul li:not(.active):hover::before {
+  background: linear-gradient(to bottom, #c1c1c1, silver, #bfbfbf, #bcbcbc, #b8b8b8, #b1b1b1, #a8a8a8, #9c9c9c, #8d8d8d, #797979, #656565, #565656, #4a4a4a, #414141, #3a3a3a, #363636, #333333, #323232, #313131, #313131);
+}
+main nav ul li:not(.active):hover a {
+  background-color: #313131;
 }
 main section {
-  width: 100%;
-  padding: 1rem;
-}
-
-h3 {
-  font-size: 1.75rem;
-}
-
-form {
-  font-family: Acme, Arial, Helvetica, sans-serif;
-}
-form fieldset {
-  display: block;
-  text-align: end;
-  background-color: #44d2d2;
-  border: none;
-  padding: 1rem 1rem 1rem 3rem;
-}
-form fieldset legend {
-  font-size: 1.75rem;
-  position: relative;
-  top: 2rem;
-}
-form fieldset p {
-  margin-top: 4rem;
-  text-align: end;
-  position: relative;
-  width: 100%;
-}
-form fieldset p::before {
-  content: "";
-  display: block;
-  width: 100%;
-  height: 3rem;
-  z-index: 100;
-  background: linear-gradient(to bottom, #44d2d2, #45d2d2, #48d3d3, #4cd4d4, #53d6d6, #5bd8d8, #66dada, #72dddd, #80e0e0, #90e4e4, #a2e9e9, #b3eded, #c3f1f1, #d1f4f4, #ddf7f7, #e8f9f9, #f0fbfb, #f7fdfd, #fbfefe, #feffff, white);
-}
-form label {
-  font-size: 1.75rem;
-  left: -2.5rem;
-  top: 3.5rem;
-  position: absolute;
-}
-form input[type=text] {
-  font-family: inherit;
-  font-size: 2rem;
-  display: block;
-  width: 100%;
-  background-color: white;
-  border: none;
-  padding: 0.5rem 1.5rem;
-}
-form input[type=text]:focus {
-  outline: none;
-}
-form textarea {
-  display: block;
-  font-size: 1.2rem;
-  width: 100%;
-  height: 20rem;
-  padding: 1rem;
-  border: none;
-  resize: none;
-  font-family: "Noticia Text", Georgia, "Times New Roman", serif;
-}
-form textarea:focus {
-  outline: none;
-}
-
-.button {
-  border: none;
+  background-color: #e1e1e1;
+  margin: 1rem;
   padding: 1rem 2rem;
-  margin: 0;
-  text-decoration: none;
-  background-color: #1e5a5a;
-  color: #aae9e9;
-  font-size: 1.5rem;
-  cursor: pointer;
-  text-align: center;
-  transition: background 250ms ease-in-out, transform 150ms ease;
-  -webkit-appearance: none;
-  -moz-appearance: none;
 }
-.button:hover, .button:focus {
-  background-color: #004242;
+main section h2 {
+  font-size: 30pt;
+  margin: 1rem 0 0.5rem 0;
 }
-.button:focus {
-  outline: 1px solid #e5ffff;
-  outline-offset: -4px;
+main section h3 {
+  font-size: 24pt;
+  margin: 1rem 0 0.25rem 0;
 }
-.button:active {
+main section p {
+  font-family: "Roboto Slab", Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+}
+main form fieldset {
+  border: none;
+}
+main form fieldset legend {
+  padding: 0;
+  font-size: 22pt;
+  padding-left: 1.2rem;
+}
+main form fieldset label {
+  display: block;
+  font-size: 10pt;
+}
+main form fieldset .buttons {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+main form fieldset .buttons button, main form fieldset .buttons input[type=button], main form fieldset .buttons .button {
+  width: 100%;
+  margin: 0.5rem;
+}
+main button, main input[type=button], main .button {
+  appearance: none;
+  padding: 0.25rem 0.75rem;
+  font-size: 20pt;
+  background-color: #fefefe;
+  border: 2px solid #c1c1c1;
+  border-radius: 0.5rem;
+  color: #414141;
+  font-family: "Roboto Mono", "Courier New", Courier, monospace;
+}
+main button:hover, main input[type=button]:hover, main .button:hover {
+  background-color: #f5f5f5;
+  color: #212121;
+  border: 2px solid #a1a1a1;
+}
+main button:focus, main input[type=button]:focus, main .button:focus {
+  background-color: #f0f0f0;
+  border: 2px solid #616161;
+  transform: scale(0.99);
+}
+main textarea {
+  display: block;
+  resize: none;
+  width: 100%;
+  height: 16rem;
+  background-color: #fefefe;
+  color: #313131;
+  padding: 0.5rem;
+  border: 2px solid #c1c1c1;
+  border-radius: 0.5rem;
+  font-family: "Roboto Slab", Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-size: 12pt;
+}
+main textarea:hover {
+  border-color: #a1a1a1;
+}
+main textarea:focus {
+  outline: none;
+  border-color: #616161;
+  transform: scale(0.99);
+}
+main input {
+  appearance: none;
+  display: block;
+  width: 100%;
+  font-size: 2rem;
+  border: 2px solid #c1c1c1;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  color: #313131;
+  background-color: #fefefe;
+  font-family: "Roboto Slab", Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+}
+main input:hover {
+  border-color: #a1a1a1;
+}
+main input:focus {
+  outline: none;
+  border-color: #616161;
   transform: scale(0.99);
 }
 
@@ -417,11 +491,10 @@ form textarea:focus {
   overflow: hidden;
   white-space: nowrap;
   margin: 0 0 0.5rem 0;
-  background-color: #aae9e9;
+  background-color: #f0f0f0;
 }
 .book-overview:hover, .book-overview:focus {
-  background-color: #e5ffff;
-  outline: 3px solid #aae9e9;
+  background-color: #fefefe;
 }
 .book-overview:active {
   transform: scale(0.99);
@@ -430,43 +503,108 @@ form textarea:focus {
   font-size: 1.5rem;
 }
 .book-overview .book-overview-summary {
-  font-family: "Noticia Text", Georgia, "Times New Roman", serif;
+  font-family: "Roboto Slab", Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }
 
 .book-summary {
   white-space: pre-line;
 }
 
-@media (min-width: 40rem) {
+@media (min-width: 58rem) {
   main {
     margin-top: 0;
   }
+  main form fieldset .buttons {
+    flex-wrap: nowrap;
+  }
+  main form fieldset .buttons button, main form fieldset .buttons input[type=button], main form fieldset .buttons .button {
+    margin: 0 0.5rem;
+  }
 }
-@media (min-width: 73rem) {
-  main {
-    grid-area: main;
+.product-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.product-card {
+  flex-grow: 1;
+  margin: 0.5rem;
+  background-color: #f0f0f0;
+  padding: 1rem;
+  font-size: initial;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  min-width: 0;
+}
+.product-card:hover, .product-card:focus {
+  background-color: #fefefe;
+}
+
+.product-img-container {
+  min-height: 10rem;
+  max-width: 20rem;
+  margin: 0 auto;
+}
+.product-img-container img {
+  display: block;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.product-header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.product-header h4, .product-header h5 {
+  margin: 0.25rem;
+}
+
+.product-description {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@media (min-width: 58rem) {
+  .product-card {
+    flex-basis: 33%;
+  }
+}
+@media (min-width: 60rem) {
+  .product-card {
+    flex-basis: 25%;
   }
 }
 footer {
-  padding: 1rem;
+  width: auto;
+  display: grid;
+  margin: 2rem 0 0 0;
+  grid-template-columns: 3rem minmax(0, 1fr) 3rem;
+  grid-template-areas: "fade-in content fade-out";
+  grid-area: footer;
+}
+footer::before, footer::after {
+  display: block;
+  content: "";
   width: 100%;
-  text-align: center;
+  height: 100%;
 }
 footer::before {
-  content: "";
-  display: block;
-  width: 100%;
-  height: 2px;
-  background: linear-gradient(to right, #e5ffff, #e4fefe, #e0fbfb, #dbf5f5, #d3eded, #c8e3e3, #bcd7d7, #adc8c8, #9cb7b7, #88a4a4, #738f8f, #5d7979, #496666, #385555, #294747, #1d3a3a, #123030, #0a2828, #052323, #011f1f, #001e1e, #001e1e, #011f1f, #052323, #0a2828, #123030, #1d3a3a, #294747, #385555, #496666, #5d7979, #738f8f, #88a4a4, #9cb7b7, #adc8c8, #bcd7d7, #c8e3e3, #d3eded, #dbf5f5, #e0fbfb, #e4fefe, #e5ffff);
+  background: linear-gradient(to right, #c1c1c1, silver, #bfbfbf, #bdbdbd, #b9b9b9, #b3b3b3, #ababab, #a0a0a0, #929292, #818181, #707070, #626262, #575757, #4f4f4f, #494949, #454545, #434343, #424242, #414141, #414141);
+  grid-area: fade-in;
 }
-footer p {
-  margin: 0.5rem auto;
+footer::after {
+  background: linear-gradient(to right, #414141, #424242, #434343, #454545, #494949, #4f4f4f, #575757, #626262, #707070, #818181, #929292, #a0a0a0, #ababab, #b3b3b3, #b9b9b9, #bdbdbd, #bfbfbf, silver, #c1c1c1, #c1c1c1);
+  grid-area: fade-out;
 }
-
-@media (min-width: 73rem) {
-  footer {
-    grid-area: footer;
-  }
+footer section {
+  grid-area: content;
+  background-color: #414141;
+  color: #c1c1c1;
+  text-align: center;
 }
 
 /*# sourceMappingURL=styles.css.map */

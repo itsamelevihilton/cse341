@@ -3,45 +3,32 @@
 *, *::before, *::after {
     box-sizing: border-box;
 }
+
 :root {
-    background-color: $color-white;
-    font-size: 1.1rem;
+    font-family: $headerFontFamily;
+    background-color: $color-lighter;
+    color: $color-blackest;
 }
 
 body {
     margin: 0;
-    font-family: $font-family-content;
-    width: 100%;
-    font-size: 1.5rem;
-}
-h2, h3, h4, h5, h6, button {
-    font-family: $font-family-header;
-    font-weight: 300;
-}
-h2 {
-    font-size: 4rem;
-    margin: 1rem 0 .5rem 0;
-}
-p {
-    margin-top: .25rem;
+    max-width: 80rem;
 }
 
-@media (min-width: $large-min-width) {
+@media (min-width: $min-width-med) {
     body {
-        font-size: 1rem;;
-    }
-}
-
-@media (min-width: $giant-min-width) {
-    body {
-        margin: 2rem auto;
-        display: grid;
-        max-width: 86rem;
-        grid-template-columns: 26rem minmax(0, 1fr) 10rem;
-        grid-template-rows: 26rem auto;
+        display:grid;
+        grid-template-columns: 12rem minmax(0, 1fr) 10rem;
+        grid-template-rows: minmax(2rem, auto) 12rem auto 1fr;
+        padding: 0 1rem;
+        margin: 1rem auto 1rem auto;
         grid-template-areas:
+            "blank1 subnav blank2"
             "logo main header"
-            "sidebar main header"
-            "footer footer footer"
+            "nav main header"
+            "footer footer footer";
+        .logo {
+            grid-area: logo;
+        }
     }
 }

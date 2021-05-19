@@ -1,0 +1,9 @@
+<nav id="store-nav">
+    <ul>
+        <% storeLinks.forEach(link => { %>
+            <li class=" <%= path.split('/')[path.split('/').length - 1] === link.path.split('/')[link.link.path.split('/').length - 1] ? 'active' : '' %> ">
+                <a href="<%= link.path %>"><%= link.title %></a>
+            </li>
+        <% }) %>
+    </ul>
+</nav>

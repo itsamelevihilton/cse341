@@ -1,24 +1,32 @@
 @use 'variables' as *;
-@use 'mixins';
+@use 'better-gradients' as bg;
 
 footer {
-    padding: 1rem;
-    width: 100%;
-    text-align: center;
-    &::before {
+    width: auto;
+    display:grid;
+    margin:2rem 0 0 0;
+    grid-template-columns: 3rem minmax(0, 1fr) 3rem;
+    grid-template-areas: "fade-in content fade-out";
+    &::before, &::after {
+        display:block;
         content: "";
-        display: block;
         width: 100%;
-        height: 2px;
-        background: mixins.ease-in-out-right-gradient($color-white, $color-black, $color-white);
+        height: 100%;
     }
-    p {
-        margin: 0.5rem auto;
+    &::before {
+        background: bg.ease-in-out-right-gradient($color-lighter, $color-darker, false, 'cubic');
+        grid-area: fade-in;
     }
-}
+    &::after {
+        background: bg.ease-in-out-right-gradient($color-darker, $color-lighter, false, 'cubic');
+        grid-area: fade-out;
 
-@media (min-width: $giant-min-width) {
-    footer {
-        grid-area: footer;
     }
+    section {
+        grid-area: content;
+        background-color: $color-darker;
+        color: $color-lighter;
+        text-align: center;
+    }
+    grid-area: footer;
 }

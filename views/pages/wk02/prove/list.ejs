@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <%- include ("../includes/head.ejs") %>
-  <script src="/scripts/prove02.js" crossorigin="anonymous"></script>
+  <%- include ("../../../partials/head.ejs") %>
+  <script src="/scripts/wk02/prove.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
-    <%- include ("../includes/header.ejs") %>
-    <%- include ("../includes/nav.ejs") %>
+    <%- include ("../../../partials/header.ejs") %>
+    <%- include ("../../../partials/nav.ejs") %>
     <main class="">
         <section>
             <h2>Book Summaries</h2>
@@ -19,9 +19,11 @@
             <% } else { %>
                 <h3>There aren't any books.  Please add a book by clicking on the button below.</h3>
             <% } %>
+        </section>
+        <section>
             <button class="button" onclick="toInput()">Add a book</button>
         </section>
     </main>
-    <%- include ("../includes/footer.ejs") %>
+    <%- include ("../../../partials/footer.ejs") %>
 </body>
 </html>

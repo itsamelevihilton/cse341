@@ -2,7 +2,7 @@
 function openBook(index) {
     const form = document.createElement('form');
     form.method = 'POST';
-    form.action = "/prove02/viewBook";
+    form.action = "/wk02/prove/displayBook";
     const hiddenField = document.createElement('input');
     hiddenField.type = 'hidden';
     hiddenField.name = 'index';
@@ -15,7 +15,7 @@ function openBook(index) {
 function deleteBook() {
     const form = document.createElement('form');
     form.method = 'POST';
-    form.action = "/prove02/deleteBook";
+    form.action = "/wk02/prove/deleteBook";
     const hiddenField = document.getElementById('index');
     form.appendChild(hiddenField);
     document.body.appendChild(form);
@@ -25,7 +25,7 @@ function deleteBook() {
 function listBooks() {
     const form = document.createElement('form');
     form.method = 'POST';
-    form.action = "/prove02/list";
+    form.action = "/wk02/prove/list";
     document.body.appendChild(form);
     form.submit();
 }
@@ -33,7 +33,7 @@ function listBooks() {
 function toInput() {
     const form = document.createElement('form');
     form.method = 'GET';
-    form.action = "/prove02/input";
+    form.action = "/wk02/prove/input";
     document.body.appendChild(form);
     form.submit();
 }

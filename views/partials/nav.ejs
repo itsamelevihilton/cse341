@@ -1,0 +1,18 @@
+<nav id="primary-nav" class="primary-nav">
+    <ul class="nav-ul">
+        <% links.forEach((link) => { %>
+            <li class="nav-item <%= path.split('/')[1] === link.path.split('/')[1] ? 'active' : ''%>">
+                <a href="<%= link.path %>"><%= link.title %></a>
+            </li>
+        <% }); %>
+    </ul>
+</nav>
+<nav aria-label="secondary" id="secondary-nav" class="secondary-nav">
+    <ul class="nav-ul">
+        <% secondaryLinks.forEach((link) => { %>
+            <li class="nav-item <%= path.split('/')[2] === link.path.split('/')[2] ? 'active' : ''%>">
+                <a href="<%= link.path %>"><%= link.title %></a>
+            </li>
+        <% }); %>
+    </ul>
+</nav>

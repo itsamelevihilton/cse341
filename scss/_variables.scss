@@ -1,19 +1,23 @@
 
-@import url('https://fonts.googleapis.com/css?family=Acme|Noticia+Text');
+@import url('https://fonts.googleapis.com/css?family=Roboto+Mono|Roboto+Slab');
+$numLinks: 2; //This should be set to the number of links on the main page
+$headerFontFamily: 'Roboto Mono',  'Courier New', Courier, monospace;
+$contentFontFamily: 'Roboto Slab', Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 
-$color-black: #001e1e;
-$color-darker: #004242;
-$color-dark: #1e5a5a;
-$color-medium: #329696;
-$color-light: #44d2d2;
-$color-lighter: #aae9e9;
-$color-white: #e5ffff;
+$color-blackest: #212121;
+$color-black: #313131;
+$color-darker: #414141;
+$color-dark: #616161;
+$color-medium: #818181;
+$color-light:#a1a1a1;
+$color-lighter: #c1c1c1;
+$color-lightest: #e1e1e1;
+$color-white: #f0f0f0;
+$color-whiter: #f5f5f5;
+$color-whitest: #fefefe;
 
+
+$min-width-med: 58rem;
+$min-width-lg: 60rem;
+$headerFontSize: 49pt;
 $header-height-sm: 6rem;
-
-$medium-min-width: 40rem;
-$large-min-width: 50rem;
-$giant-min-width: 73rem;
-
-$font-family-header: Acme, Arial, Helvetica, sans-serif;
-$font-family-content: 'Noticia Text', Georgia, 'Times New Roman', serif;

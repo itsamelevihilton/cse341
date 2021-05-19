@@ -1,13 +1,13 @@
 @use 'variables' as *;
-@use 'mixins';
+@use 'better-gradients' as bg;
 
-nav {
+#primary-nav {
     position: fixed;
     display: none;
-    top: $header-height-sm;
-    background-color: $color-dark;
+    top: $header-height-sm + .5rem;;
+    background-color: $color-blackest;
     color: $color-lighter;
-    font-family: $font-family-header;
+    font-family: $headerFontFamily;
     width: 100%;
     &::before {
         z-index: 9;
@@ -28,21 +28,17 @@ nav {
         display:flex;
         width: 100%;
         flex-direction: column;
-        .spacer {
-            display: none;
-            width: 1rem;
-        }
         li {
             z-index: 99;
             width: 100%;
-            font-size: 2rem;
+            font-size: 1.5rem;
             &::after {
                 content: "";
                 display:block;
                 margin: 0 auto;
                 height: 2px;
                 width: 100%;
-                background:mixins.ease-in-out-right-gradient($color-dark, $color-medium, $color-dark);
+                background: bg.ease-in-out-right-gradient($color-dark, $color-medium, $color-dark);
             }
             &:last-child::after {
                 display: none;
@@ -68,99 +64,130 @@ nav {
     }
 }
 
+#secondary-nav {
+    padding: 0;
+    grid-area:subnav;
+    display:block;
+    margin-top: $header-height-sm + 1rem;
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: space-between;
+        li {
+            margin: .5rem;
+            width: 100%;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            &::before {
+                display: block;
+                content: "";
+                height: 2rem;
+                background: bg.ease-in-out-down-gradient($color-lighter, $color-darker);
+            }
+            a {
+                padding: 0 1rem;
+                text-decoration: none;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                height: 3rem;
+                width: 100%;
+                background-color: $color-darker;
+                color: $color-lighter;
+            }
+            &.active, &:focus {
+                flex-direction: column-reverse;
+                a {
+                    background-color: $color-blackest;
+                    color: $color-white;
+                }
+                &::before {
+                    background: bg.ease-in-out-down-gradient($color-blackest, $color-lighter);
+                }
+            }
+            &:not(.active):hover {
+                &::before {
+                    background: bg.ease-in-out-down-gradient($color-lighter, $color-black);
+                }
+                a {
+                    background-color: $color-black;
+                }
+            }
+        }
+    }
+}
 
-@media (min-width: $medium-min-width) {
-    nav {
+@media (min-width: $min-width-med) {
+    
+    #primary-nav {
+        background-color: transparent;
+        grid-area: nav;
+        width: 100%;
         display: block;
         position: static;
-        font-size: 2rem;
         &::before {
             display: none;
         }
         ul {
-            flex-direction: row;
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            a {
+                text-decoration: none;
+                display:block;
+                height: 2rem;
+                width: 9rem;
+                padding: .3rem 1rem;
+                text-align: end;
+                color: $color-lighter;
+                background-color: $color-darker;
+            }
             li {
-                width: auto;
                 display:flex;
-                align-items: center;
+                flex-direction: row-reverse;
+                margin:.3rem auto;
+                font-size: 1rem;
                 &::after {
-                    height: 75%;
-                    width: 2.4px;
-                    background: mixins.ease-in-out-down-gradient($color-dark, $color-medium, $color-dark);
-                    margin: 0;
+                    display: block;
+                    content: "";
+                    width: 3rem;
+                    height: 2rem;
+                    background: bg.ease-in-out-right-gradient($color-lighter, $color-darker);
                 }
                 &:last-child::after {
                     display: block;
                 }
-            }
-            .spacer {
-                display: block;
-                display:flex;
-                align-items: center;
-                &::after {
-                    margin-left: auto;
-                }
-            }
-        }
-    }
-}
-
-@media (min-width: $large-min-width) {
-    nav {
-        font-size:1.25rem;
-    }
-}
-
-@media (min-width: $giant-min-width) {
-    nav {
-        grid-area: sidebar;
-        background-color: $color-white;
-        padding: 1rem 1rem 1rem 3rem;
-        ul {
-            flex-direction: column;
-            width: 22rem;
-            .spacer {
-                display: none
-            }
-            li {
-                flex-direction: row-reverse;
-                background-color: $color-darker;
-                text-align: end;
-                height: 4rem;
-                margin: .5rem;
-                justify-content: space-between;
-                &::after {
-                    display:block;
-                    height: 100%;
-                    width: 9rem;
-                    z-index: 100;
-                    background: mixins.ease-in-out-right-gradient($color-white, $color-darker);
-                }
-                &:hover::after {
-                    background: mixins.ease-in-out-right-gradient($color-white, $color-black);
-
-                }
-                &:hover {
-                    background-color: $color-black;
-                }
-                &.active {
+                &.active, &:focus {
                     flex-direction: row;
-                    background-color: $color-black;
+                    a {
+                        background-color: $color-blackest;
+                        color: $color-white;
+                        text-align: start;
+                    }
                     &::after {
-                        background: mixins.ease-in-out-right-gradient($color-black, $color-white);
-                    }
-                    &:hover::after {
-                        background: mixins.ease-in-out-right-gradient($color-black, $color-white);
+                        background: bg.ease-in-out-right-gradient($color-blackest, $color-lighter);
                     }
                 }
-            }
-            a {
-                &:hover, &:focus {
-                    background-color: transparent;
-                    color: $color-white;
+                &:not(.active):hover {
+                    &::after {
+                        background: bg.ease-in-out-right-gradient($color-lighter, $color-black);
+                    }
+                    a {
+                        background-color: $color-black;
+                    }
                 }
-
+                &:focus {
+                    transform: scale(0.99);
+                }
             }
         }
+    }
+
+    #secondary-nav {
+        padding: 0 3rem;
+        margin-top:0;
     }
 }
