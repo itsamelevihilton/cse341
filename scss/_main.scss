@@ -160,6 +160,26 @@ main {
             transform: scale(0.99);
         }
     }
+    table {
+        border: 3px solid $color-darker;
+        border-collapse: collapse;
+        width: 100%;
+        tr {
+            &:nth-of-type(even) {
+                background-color: $color-whitest;
+            }
+            th {
+                background-color: $color-darker;
+                color: $color-whitest
+            }
+            th, td {
+                padding: .15rem .5rem;
+            }
+            td {
+                border-right: 2px solid $color-medium;
+            }
+        }
+    }
 }
 .book-overview {
     display: block;

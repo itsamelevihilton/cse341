@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include ("../../../partials/head.ejs") %>
+</head>
+
+<body>
+    <%- include ("../../../partials/header.ejs") %>
+    <%- include ("../../../partials/nav.ejs") %>
+    <main>
+        <%- include ("../../../partials/store/nav.ejs") %>
+        <section>
+            <h2>Here are our current items.</h2>
+            <p>Click to see more details</p>
+            <div class="product-container">
+              <% products.forEach(item => { %>
+                <form action="/wk03/prove/products/<%= item.id %>" method="POST" class="product-form">
+                  <button type="submit" class="product-card">
+                    <div class="product-img-container">
+                      <img src="<%= item.imageUrl %>" class="product-img">
+                    </div>
+                    <div class="product-header">
+                      <h4><%= item.name %></h4>
+                      <h5><%= item.price %></h5>
+                    </div>
+                    <p class="product-description"><%= item.description %></p>
+                  </button>
+                </form>
+              <% }) %>
+            </div>
+        </section>
+    </main>
+    <%- include ("../../../partials/footer.ejs") %>
+</body>
+</html>

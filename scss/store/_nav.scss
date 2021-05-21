@@ -1,2 +1,18 @@
-@use '../variables';
+@use '../variables' as *;
 
+#store-nav {
+    ul {
+        background-color: $color-blackest;
+        justify-content: left;
+        li {
+            width: auto;
+            &::before {
+                display: none;
+            }
+            a {
+                height: auto;
+                padding: 1rem 2rem;
+            }
+        }
+    }
+}

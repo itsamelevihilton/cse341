@@ -1,20 +1,23 @@
-@use 'variables' as *;
+@use '../variables' as *;
 
 .product-container {
-    display:flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+    display:grid;
+    grid-template-columns: 1fr;
+    width: 100%;
+}
+.product-form {
+    width: 100%;
+    min-width: 0;
 }
 .product-card {
-    flex-grow: 1;
     margin: .5rem;
     background-color: $color-white;
     padding: 1rem;
     font-size:initial;
-    display:flex;
-    flex-direction: column;
-    align-items: stretch;
     min-width: 0;
+    width: 100%;
+    min-width: 0;
+    height:100%;
     &:hover, &:focus {
         background-color: $color-whitest;
     }
@@ -31,8 +34,6 @@
     }
 }
 .product-header {
-    display: flex;
-    flex-wrap:wrap;
     justify-content: space-between;
     h4, h5 {
         margin: .25rem;
@@ -45,13 +46,13 @@
 }
 
 @media (min-width: $min-width-med) {
-    .product-card {
-        flex-basis: 33%;
+    .product-container {
+        grid-template-columns: 1fr 1fr;
     }
 }
 
 @media(min-width: $min-width-lg) {
-    .product-card {
-        flex-basis: 25%;
+    .product-container {
+        grid-template-columns: 1fr 1fr 1fr;
     }
 }

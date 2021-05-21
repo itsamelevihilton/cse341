@@ -10,7 +10,10 @@
     <main>
         <%- include ("../../../partials/store/nav.ejs") %>
         <section>
-            <h2>Press the buttons above to show each of the additional pages!</h2>
+            <h2><%= product.name %></h2>
+            <img src="<%= product.imageUrl %>" alt="Photo of <%= product.name %>">
+            <h3><%= product.price %></h3>
+            <p><%= product.description %></p>
         </section>
     </main>
     <%- include ("../../../partials/footer.ejs") %>

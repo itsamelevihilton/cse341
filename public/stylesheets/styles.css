@@ -480,6 +480,24 @@ main input:focus {
   border-color: #616161;
   transform: scale(0.99);
 }
+main table {
+  border: 3px solid #414141;
+  border-collapse: collapse;
+  width: 100%;
+}
+main table tr:nth-of-type(even) {
+  background-color: #fefefe;
+}
+main table tr th {
+  background-color: #414141;
+  color: #fefefe;
+}
+main table tr th, main table tr td {
+  padding: 0.15rem 0.5rem;
+}
+main table tr td {
+  border-right: 2px solid #818181;
+}
 
 .book-overview {
   display: block;
@@ -519,63 +537,6 @@ main input:focus {
   }
   main form fieldset .buttons button, main form fieldset .buttons input[type=button], main form fieldset .buttons .button {
     margin: 0 0.5rem;
-  }
-}
-.product-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-}
-
-.product-card {
-  flex-grow: 1;
-  margin: 0.5rem;
-  background-color: #f0f0f0;
-  padding: 1rem;
-  font-size: initial;
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  min-width: 0;
-}
-.product-card:hover, .product-card:focus {
-  background-color: #fefefe;
-}
-
-.product-img-container {
-  min-height: 10rem;
-  max-width: 20rem;
-  margin: 0 auto;
-}
-.product-img-container img {
-  display: block;
-  width: 100%;
-  margin: 0 auto;
-}
-
-.product-header {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-}
-.product-header h4, .product-header h5 {
-  margin: 0.25rem;
-}
-
-.product-description {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-@media (min-width: 58rem) {
-  .product-card {
-    flex-basis: 33%;
-  }
-}
-@media (min-width: 60rem) {
-  .product-card {
-    flex-basis: 25%;
   }
 }
 footer {

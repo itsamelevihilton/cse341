@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include ("../../../partials/head.ejs") %>
+</head>
+
+<body>
+    <%- include ("../../../partials/header.ejs") %>
+    <%- include ("../../../partials/nav.ejs") %>
+    <main>
+        <section>
+            <h2>Testing Session Variables</h2>
+            <p>Our current style is <%= style %></p>
+            <p>The counter is is at: <%= counter %></p>
+        </section>
+        <section>
+            <form action="/wk05/ta/change-style">
+                <fieldset>
+                    <label for="style">Change the style</label>
+                    <select name="style" id="style">
+                        <option value="light">Light</option>
+                        <option value="dark">Dark</option>
+                    </select>
+                    <button type="submit">Submit</button>
+                </fieldset>
+            </form>
+        </section>
+        <section>
+            <form action="/wk05/ta/counter?action=add">
+                <fieldset>
+                    <button type="submit">Add to the Counter</button>
+                </fieldset>
+            </form>
+            <form action="/wk05/ta/counter?action=subtract">
+                <fieldset>
+                    <button type="submit">Subtract from the Counter</button>
+                </fieldset>
+            </form>
+        </section>
+    </main>
+    <%- include ("../../../partials/footer.ejs") %>
+</body>
+</html>

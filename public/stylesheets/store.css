@@ -1,0 +1,77 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto+Mono|Roboto+Slab");
+#store-nav ul {
+  background-color: #212121;
+  justify-content: left;
+}
+#store-nav ul li {
+  width: auto;
+}
+#store-nav ul li::before {
+  display: none;
+}
+#store-nav ul li a {
+  height: auto;
+  padding: 1rem 2rem;
+}
+
+.product-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  width: 100%;
+}
+
+.product-form {
+  width: 100%;
+  min-width: 0;
+}
+
+.product-card {
+  margin: 0.5rem;
+  background-color: #f0f0f0;
+  padding: 1rem;
+  font-size: initial;
+  min-width: 0;
+  width: 100%;
+  min-width: 0;
+  height: 100%;
+}
+.product-card:hover, .product-card:focus {
+  background-color: #fefefe;
+}
+
+.product-img-container {
+  min-height: 10rem;
+  max-width: 20rem;
+  margin: 0 auto;
+}
+.product-img-container img {
+  display: block;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.product-header {
+  justify-content: space-between;
+}
+.product-header h4, .product-header h5 {
+  margin: 0.25rem;
+}
+
+.product-description {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@media (min-width: 58rem) {
+  .product-container {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media (min-width: 60rem) {
+  .product-container {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+/*# sourceMappingURL=store.css.map */
