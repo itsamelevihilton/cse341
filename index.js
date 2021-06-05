@@ -10,6 +10,7 @@ const routes = require('./routes');
 const mongooseConnect = require('./utils/database').mongooseConnect;
 
 
+
 const corsOptions = {
     origin: "https://cse341portfolio.herokuapp.com/",
     optionsSuccessStatus: 200
@@ -62,6 +63,7 @@ app.locals.secondaryLinks = {
     wk04: defaultSecondaryLinks('/wk04'),
     wk05: defaultSecondaryLinks('/wk05')
 }
+app.locals.storeLinks = {};
 
 app.use(express.static(path.join(__dirname, 'public')))
     .set('views', path.join(__dirname, 'views'))

@@ -2,9 +2,17 @@
 <nav id="store-nav">
     <ul>
         <% storeLinks.forEach((link) => { %>
-            <li class=" <%= path.split('/')[path.split('/').length - 1] === link.path.split('/')[link.path.split('/').length - 1] ? 'active' : '' %> ">
+            <li class=" <%= path.split('/')[3] === link.path.split('/')[3] ? 'active' : '' %> ">
                 <a href="<%= link.path %>"><%= link.title %></a>
             </li>
         <% }) %>
+    </ul>
+    <ul>
+        <% if (!(typeof profileLinks === 'undefined' || profileLinks === null)) { 
+            profileLinks.forEach(profileLink => { %>
+            <li class="<%= path.split('/')[3] === profileLink.path.split('/')[3] ? 'active' : '' %> ">
+                <a href="<%= profileLink.path %>"><%= profileLink.title %></a>
+            </li>
+        <% }) } %>
     </ul>
 </nav>

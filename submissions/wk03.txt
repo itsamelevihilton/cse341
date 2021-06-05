@@ -1,0 +1,30 @@
+After completing the assignment, be sure to push to Github and Heroku.
+Please answer the questions in this text file and submit it to I-Learn.
+
+1. Copy and paste the URL for your web application (e.g., Heroku):
+http://cse341.levilearns.com/wk03/prove
+
+2. Copy and paste the URL for your source code repository (e.g., GitHub):
+https://github.com/itsamelevihilton/cse341
+
+3. Briefly list and describe the elements of the application that are functioning. 
+It works to read data from my data model and json files.  It also displays all products, single products, and all users.  It does all of this through MVC and are separated between weeks so I can accurately gauge progress while keeping everything organized.
+
+4. Briefly describe any pieces of the assignment that are not yet working correctly.
+I believe that everything should be working for the assignment.
+
+5. Briefly describe the "coolest" thing you learned while completing this assignment.
+It was very interesting to learn about how easy it was to access query params and it looks very nice compared to php query params.
+
+6. If you could change this assignment to be more effective or helpful, what would you change?
+I feel like this one was kind of vague.  It took an incredible amount of time to get everything changed over, and I think that it could be helpful to teach this a bit sooner so that we don't have to undo lots of things that we have done.
+
+7. Please select the category you feel best describes your assignment: 5
+   1 - Some attempt was made
+   2 - Developing, but significantly deficient
+   3 - Slightly deficient, but still mostly adequate
+   4 - Meets requirements
+   5 - Shows creativity and excels above and beyond requirements
+
+8. Provide a brief justification (1-2 sentences) for selecting that category.
+I think that while my setup isn't exactly how it went over in the videos, it is organized so that someone looking at the site navigation could understand  what was going on and how everything is set up.

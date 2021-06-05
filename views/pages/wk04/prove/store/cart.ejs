@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include ("../../../../partials/head.ejs") %>
+</head>
+
+<body>
+    <%- include ("../../../../partials/header.ejs") %>
+    <%- include ("../../../../partials/nav.ejs") %>
+    <main>
+        <%- include ("../../../../partials/store/nav.ejs") %>
+        <section>
+            <h2>Shopping cart</h2>
+            <p>Click to see more details</p>
+            <div class="cart-items">
+              <% products.forEach(item => { %>
+                <div class="cart-item">
+                    <div class="cart-image">
+                        <img src="<%= item.product.imageUrl %>">
+                    </div>
+                    <h3 class="cart-title"><%= item.product.title %></h3>
+                    <form action=""></form>
+                </div>
+
+                <form action="/wk04/prove/products/<%= item.product.id %>" method="POST" class="product-form">
+                  <button type="submit" class="product-card">
+                    <div class="product-img-container">
+                      <img src="<%= item.product.imageUrl %>" class="product-img">
+                    </div>
+                    <div class="product-header">
+                      <h4><%= item.product.name %></h4>
+                      <h5><%= item.product.price %></h5>
+                    </div>
+                    <p class="product-description"><%= item.product.description %></p>
+                  </button>
+                </form>
+              <% }) %>
+            </div>
+        </section>
+    </main>
+    <%- include ("../../../../partials/footer.ejs") %>
+</body>
+</html>

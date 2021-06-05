@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include ("../../../../partials/head.ejs") %>
+</head>
+
+<body>
+    <%- include ("../../../../partials/header.ejs") %>
+    <%- include ("../../../../partials/nav.ejs") %>
+    <main>
+        <%- include ("../../../../partials/store/nav.ejs") %>
+        <section>
+            <h2><%= product.title %></h2>
+            <img src="<%= product.imageUrl %>" alt="Photo of <%= product.title %>">
+            <h3><%= product.price %></h3>
+            <p><%= product.description %></p>
+            <form action="/wk04/prove/add-to-cart/" method="POST">
+                <input type="hidden" value="<%= product.id %>" name="id">
+                <label for="quantity"></label>
+                <input type="number" value="1" id="quantity" name="quantity">
+                <button type="submit">Add to Cart</button>
+            </form>
+            <% if (!(ownsProduct === 'undefined' || ownsProduct === null) && ownsProduct === true) { %>
+                <form action="/wk04/prove/edit-product/<%= product.id %>" method="GET">
+                    <button type="submit">Edit Product</button>
+                </form>
+                <form action="/wk04/prove/delete-product/" method="POST">
+                    <input type="hidden" value="<%= product.id %>" name="id">
+                    <button type="submit">Delete Product</button>
+                </form>
+            <% } %>
+        </section>
+    </main>
+    <%- include ("../../../../partials/footer.ejs") %>
+</body>
+</html>

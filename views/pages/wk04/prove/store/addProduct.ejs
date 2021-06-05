@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include ("../../../../partials/head.ejs") %>
+</head>
+
+<body>
+    <%- include ("../../../../partials/header.ejs") %>
+    <%- include ("../../../../partials/nav.ejs") %>
+    <main>
+        <%- include ("../../../../partials/store/nav.ejs") %>
+        <section>
+            <form action="/wk04/prove/add-product" method="POST">
+                <label for="title">Product Name</label>
+                <input type="text" id="title" name="title" placeholder="Bacon">
+                <label for="price">Price</label>
+                <input type="number" step="0.01" id="price" name="price" placeholder="Free.99">
+                <label for="description">Description</label>
+                <textarea id="description" name="description" placeholder="Bacon is good"></textarea>
+                <label for="imageUrl">Image Url</label>
+                <input type="text" id="imageUrl" name="imageUrl" value="https://placeimg.com/640/480/tech">
+                <button type="submit">Save Product</button>
+            </form>
+        </section>
+    </main>
+    <%- include ("../../../../partials/footer.ejs") %>
+</body>
+</html>
