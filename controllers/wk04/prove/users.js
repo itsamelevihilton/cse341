@@ -1,7 +1,7 @@
 const dF = require('../../../utils/dateFormatter');
 const User = require('../../../models/wk04/prove/user');
 const Order = require('../../../models/wk04/prove/order');
-
+const Product = require('../../../models/wk04/prove/product');
 
 exports.getLoginPage = (req, res, next) => {
     res.render('pages/wk04/prove/store/login', {
@@ -59,8 +59,8 @@ exports.getCart = (req, res, next) => {
         })
 }
 exports.postAddToCart = (req, res, next) => {
-    const quantity = req.params.quantity;
-    const productId = req.params.productId;
+    const quantity = req.body.quantity;
+    const productId = req.body.productId;
     Product.findById(productId)
         .then(product => {
             return req.user.addToCart(product, quantity);

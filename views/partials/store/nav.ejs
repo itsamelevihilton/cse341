@@ -9,7 +9,8 @@
     </ul>
     <ul>
         <% if (!(typeof profileLinks === 'undefined' || profileLinks === null)) { 
-            profileLinks.forEach(profileLink => { %>
+            profileLinks.forEach(profileLink => { 
+                console.log(path.split('/')) %>
             <li class="<%= path.split('/')[3] === profileLink.path.split('/')[3] ? 'active' : '' %> ">
                 <a href="<%= profileLink.path %>"><%= profileLink.title %></a>
             </li>
